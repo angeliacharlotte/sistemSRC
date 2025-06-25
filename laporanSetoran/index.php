@@ -45,7 +45,7 @@ $result = mysqli_query($koneksi, $query);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Laporan Setoran All Area</h1>
+            <h1 class="m-0">Laporan Setoran Semua Area</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="">Setoran</a></li>
