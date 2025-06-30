@@ -960,6 +960,20 @@
         <p>Data Setoran</p>
       </a>      
     </li>
+    <?php elseif(userLogin()['level'] == 2) :?>
+      <li class="nav-item">
+      <a href="<?= $main_url ?>setoran/form-setoran_bandung.php" class="nav-link" <?= menuHome() ?>>
+        <i class="nav-icon fas fa-money-bill text-sm"></i>
+        <p>Data Setoran</p>
+      </a>      
+    </li>
+    <?php elseif(userLogin()['level'] == 3) :?>
+      <li class="nav-item">
+      <a href="<?= $main_url ?>setoran/form-setoran.php" class="nav-link" <?= menuHome() ?>>
+        <i class="nav-icon fas fa-money-bill text-sm"></i>
+        <p>Data Setoran</p>
+      </a>      
+    </li>
     <?php endif; ?>
     <!-- Laporan Pembelian -->
     <?php if(userLogin()['level'] == 1): ?>
