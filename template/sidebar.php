@@ -952,7 +952,16 @@
 
     <!-- Report -->
     <li class="nav-header">Report</li>
-    
+    <!-- Setoran -->
+    <?php if(userLogin()['level'] == 1): ?>
+    <li class="nav-item">
+      <a href="<?= $main_url ?>laporanSetoran/" class="nav-link" <?= menuHome() ?>>
+        <i class="nav-icon fas fa-money-bill text-sm"></i>
+        <p>Data Setoran</p>
+      </a>      
+    </li>
+    <?php endif; ?>
+    <!-- Laporan Pembelian -->
     <?php if(userLogin()['level'] == 1): ?>
     <li class="nav-item has-treeview <?= menuMaster()?>">
       <a href="#" class="nav-link">
@@ -1073,7 +1082,6 @@
         </li>
       </ul>
     </li>
-    
     <?php elseif (userLogin()['level'] == 2): ?>
     <!-- Pembelian untuk Operator Bandung-->
     <li class="nav-item has-treeview <?= menuMaster()?>">
@@ -1195,7 +1203,7 @@
         </a>
         </li></p>
     <?php endif; ?>
-
+<!-- Laporan Penjualan -->
     <?php if(userLogin()['level'] == 1): ?>
     <li class="nav-item has-treeview <?= menuMaster()?>">
       <a href="#" class="nav-link">
@@ -1414,7 +1422,7 @@
       </a>
     </li>
     <?php endif; ?>
-
+<!-- Laporan Piutang -->
     <?php if(userLogin()['level'] == 1): ?>
     <li class="nav-item has-treeview <?= menuMaster()?>">
       <a href="#" class="nav-link">
@@ -1657,129 +1665,7 @@
         </li>
       </ul>
     </li>
-    <?php endif; ?>
-    <!-- Setoran -->
-    <?php if(userLogin()['level'] == 1): ?>
-    <li class="nav-item has-treeview <?= menuMaster()?>">
-      <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>
-          Data Setoran
-        </p>
-        <i class="fas fa-angle-left right"></i>
-      </a>
-      <ul class="nav nav-treeview ml-3">
-        <!-- Purwakarta -->
-        <li class="nav-item <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanSetoran/" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Purwakarta            
-          </p>
-          </a>
-        </li>
-        <!-- Bekasi -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/bekasi" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Bekasi            
-          </p>
-          </a>
-        </li>
-        <!-- Bandung -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/bandung" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Bandung            
-          </p>
-          </a>
-        </li>
-        <!-- Bandung2 -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/bandung2" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Bandung 2            
-          </p>
-          </a>
-        </li>
-        <!-- Garut -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/garut" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Garut            
-          </p>
-          </a>
-        </li>
-        <!-- Tasikmalaya -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/tasikmalaya" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Tasikmalaya            
-          </p>
-          </a>
-        </li>
-        <!-- Cirebon -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/cirebon" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Cirebon            
-          </p>
-          </a>
-        </li>
-        <!-- Tangerang -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/tangerang" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Tangerang            
-          </p>
-          </a>
-        </li>
-        <!-- Jakarta Selatan -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/jaksel" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Jakarta Selatan            
-          </p>
-          </a>
-        </li>
-        <!-- Jakarta Pusat -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/jakpus" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Jakarta Pusat            
-          </p>
-          </a>
-        </li>
-        <!-- Jakarta Timur -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/jaktim" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Jakarta Timur            
-          </p>
-          </a>
-        </li>
-        <!-- Jakarta Barat -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanMargin/jakbar" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Jakarta Barat            
-          </p>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <?php endif; ?>
+    <?php endif; ?>    
 
     <!-- Admin Only -->
     <?php if(userLogin()['level'] == 1): ?>

@@ -19,6 +19,16 @@ body{
     margin-bottom: 50px;   
 }
 
+td.keterangan {
+  display: block;
+  max-width: 100px;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+
+
 .progress-bar {
     width: 406px;
     height: 10px;

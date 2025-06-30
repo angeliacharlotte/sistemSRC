@@ -18,15 +18,8 @@ require "../template/sidebar.php";
 
 
 
-if (empty($_GET['tanggal_dari'])) {
-    $tanggal = date('Y-m-d');
-}else{
-    $tanggal = $_GET['tanggal_dari'] . '-' . $_GET['tanggal_sampai'];
-}
-
-
 if(isset($_POST['simpan'])){  
-    if (insert($_POST)) {
+    if (insert_cirebon($_POST)) {
          $alert = '<div class="alert alert-success alert-dismissible">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <h5><i class="icon fas fa-check"></i> Alert!</h5>
@@ -43,7 +36,7 @@ if(isset($_POST['simpan'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Area Purwakarta</h1>
+            <h1 class="m-0">Area Cirebon</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -57,20 +50,6 @@ if(isset($_POST['simpan'])){
 
     <section class="content">
         <div class="container-fluid">
-            <!-- <div class="card">
-                <div class="card-header">
-                            <label for="">Periode Setoran</label>
-                        </div>
-                        <div class="m-3">
-                        <form method="GET">
-                            <div class="input-group mb-2">
-                                <input type="date" class="form-control" name="tanggal_dari">
-                                <input type="date" class="form-control" name="tanggal_sampai">
-                                <button type="submit" class="btn btn-primary">Tampilkan</button>
-                            </div>
-                        </div>
-                        </form>
-                    </div> -->
             <div class="card">
                 <form action="" method="POST" enctype="multipart/form-data">
                 <div class="card-header">
@@ -83,7 +62,7 @@ if(isset($_POST['simpan'])){
                         <div class="col-lg-5 mb-3 pr-3">
                             <div class="form-group">
                             <label for="kode">Kode Setoran</label>
-                            <input type="text" class="form-control" id="id_setoran" name="id_setoran" value="<?=  generateId()  ?>" readonly>
+                            <input type="text" class="form-control" id="id_setoran" name="id_setoran" value="<?=  generateIdcirebon()  ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="name">Tanggal *</label>
@@ -115,7 +94,7 @@ if(isset($_POST['simpan'])){
                             <label for="pengeluaran">Pengeluaran *</label>
                             <input type="number" name="pengeluaran" class="form-control" id="pengeluaran" placeholder="Rp 0" autocomplete="off" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group text-center">
                             <label for="pengeluaran">Keterangan Pengeluaran *</label>
                             <textarea name="ktr" id="ktr" rows="5" class="form-control" placeholder="Masukkan keterangan lengkap..."></textarea>
                         </div>

@@ -7,152 +7,152 @@ function generateId(){
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "STP-" . sprintf("%03s", $noUrut);
+    $maxid = "STPR-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdBandung(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_bandung");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_bandung2");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STBG-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdBandung2(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_bandung2");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_bandung2");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STBS-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdbekasi(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_bekasi");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_bekasi");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BKS-" . sprintf("%03s", $noUrut);
+    $maxid = "STBK-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdcirebon(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_cirebon");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_cirebon");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STCB-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdgarut(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_garut");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_garut");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STGT-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdjakbar(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_jakbar");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_jakbar");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STJB-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdjakpus(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_jakpus");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_jakpus");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STJP-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdjaksel(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_jaksel");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_jaksel");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STJS-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdjaktim(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_jaktim");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_jaktim");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STJT-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdtangerang(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_tangerang");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_tangerang");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STTG-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdtasik(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_barang) as maxid FROM tbl_barang_tasik");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_tasik");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
-    $noUrut = (int) substr($maxid, 4, 3);
+    $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "BRG-" . sprintf("%03s", $noUrut);
+    $maxid = "STTS-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
@@ -161,6 +161,63 @@ function generateIdtasik(){
 function insert($data) {
     global $koneksi;
 
+   $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
+    $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
+
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
+
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
+
+// Upload file (PDF, DOCX, XLSX)
+// $file_ktr = '';
+// if ($_FILES['ktr']['name'] != '') {
+//     $allowed_extensions = ['pdf', 'docx', 'doc', 'xlsx', 'xls'];
+//     $file_ext = strtolower(pathinfo($_FILES['ktr']['name'], PATHINFO_EXTENSION));
+//     $file_tmp = $_FILES['ktr']['tmp_name'];
+
+//     if (in_array($file_ext, $allowed_extensions)) {
+//         $new_name = 'ktr_' . $id_setoran . '.' . $file_ext;
+//         $upload_path = '../asset/keteranganPengeluaran/' . $new_name;
+
+//         if (move_uploaded_file($file_tmp, $upload_path)) {
+//             $file_ktr = $new_name;
+//         } else {
+//             return false; // gagal upload
+//         }
+//     } else {
+//         return false; // ekstensi tidak diizinkan
+//     }
+// } else {
+//     $file_ktr = null;
+// }
+
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
+
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
+
+}
+function insert_bekasi($data) {
+    global $koneksi;
     $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
     $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
     $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
@@ -168,337 +225,360 @@ function insert($data) {
     $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
     $periode = mysqli_real_escape_string($koneksi, $data['periode']);
     $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
-    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);    
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id_setoran);
-    } else {
-        $gambar = 'transaction.png';
-    }
-
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
-
-    $sqlBrg = "INSERT INTO tbl_setoran 
-           (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, bukti)
-           VALUES 
-           ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$gambar')";
-
-    mysqli_query($koneksi, $sqlBrg);
-
-    return mysqli_affected_rows($koneksi);
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
 }
-function insert_bekasi($data) {
-    global $koneksi;
 
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
-    $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_bekasi (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+mysqli_query($koneksi, $sqlBrg);
 
-    $sqlBrg = "INSERT INTO tbl_barang_bekasi VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+return mysqli_affected_rows($koneksi);
 
-    return mysqli_affected_rows($koneksi);
 }
 function insert_bandung($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+     global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_bandung VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_bandung (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);   
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 function insert_bandung2($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+      global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_bandung2 VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_bandung2 (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 function insert_garut($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+     global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_garut VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_garut (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 function insert_tasik($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+      global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_tasik VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_tasik (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 function insert_cirebon($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+      global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_cirebon VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_cirebon (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 function insert_tangerang($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+      global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_tangerang VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_tangerang (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 function insert_jaksel($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+      global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_jaksel VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_jaksel (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 function insert_jakpus($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+      global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_jakpus VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_jakpus (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 function insert_jaktim($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+      global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_jaktim VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_jaktim (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 function insert_jakbar($data) {
-    global $koneksi;
-
-    $id = mysqli_real_escape_string($koneksi, $data['kode']);
-    $name = mysqli_real_escape_string($koneksi, $data['name']);
-    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
-    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
-    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
-    $stockmin = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+      global $koneksi;
+    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
+    $transaksi = mysqli_real_escape_string($koneksi, $data['transaksi']);
+    $pengirim = mysqli_real_escape_string($koneksi, $data['pengirim']);
+    $penerima = mysqli_real_escape_string($koneksi, $data['penerima']);
+    $periode = mysqli_real_escape_string($koneksi, $data['periode']);
+    $pemasukan = mysqli_real_escape_string($koneksi, $data['pemasukan']);
+    $pengeluaran = mysqli_real_escape_string($koneksi, $data['pengeluaran']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    $keterangan = mysqli_real_escape_string($koneksi, $data['ktr']);
 
-    //upload gambar barang
-    if($gambar != null) {
-        $gambar = uploadimg(null, $id);
-    } else {
-        $gambar = 'default-brg.png';
-    }
+// Upload gambar
+if ($gambar != null) {
+    $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
+} else {
+    $gambar = 'transaction.png';
+}
 
-    // gambar tidak sesuai validasi
-    if ($gambar == '') {
-        return false;
-    }
+// Gambar tidak sesuai validasi
+if ($gambar == '') {
+    return false;
+}
 
-    $sqlBrg = "INSERT INTO tbl_barang_jakbar VALUE ( '$id', '$name', '$harga_beli', '$harga_jual', 0, '$satuan', '$stockmin', '$gambar')";
-    mysqli_query($koneksi, $sqlBrg);
+// Simpan ke database
+$sqlBrg = "INSERT INTO tbl_setoran_jakbar (id_setoran, tgl_setoran, transaksi, pengirim, penerima, periode, pemasukan, pengeluaran, keterangan, bukti)
+    VALUES ('$id_setoran', '$tanggal', '$transaksi', '$pengirim', '$penerima', '$periode', '$pemasukan', '$pengeluaran', '$keterangan', '$gambar')";
 
-    return mysqli_affected_rows($koneksi);
+mysqli_query($koneksi, $sqlBrg);
+
+return mysqli_affected_rows($koneksi);
 }
 
 function delete($id, $gbr) {
