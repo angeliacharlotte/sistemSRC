@@ -26,38 +26,14 @@ if(isset($_POST['login'])) {
                     header("Location: ../dashboard.php");
                     exit();
                 }else if($row['level'] == '2'){
-                    header("Location: ../operator/bandung/");
+                    header("Location: ../operator/cinunuk/");
                     exit();
                 }else if($row['level'] == '3'){
-                    header("Location: ../operator/purwakarta/");
-                    exit();
-                }else if($row['level'] == '4'){
-                    header("Location: ../operator/bandung2/");
-                    exit();
-                }else if($row['level'] == '5'){
-                    header("Location: ../operator/bekasi/");
-                    exit();
-                }else if($row['level'] == '6'){
                     header("Location: ../operator/cirebon/");
                     exit();
-                }else if($row['level'] == '7'){
-                    header("Location: ../operator/garut/");
-                    exit();
-                }else if($row['level'] == '8'){
-                    header("Location: ../operator/jakbar/");
-                    exit();
-                }else if($row['level'] == '9'){
-                    header("Location: ../operator/jakpus/");
-                    exit();
-                }else if($row['level'] == '10'){
-                    header("Location: ../operator/jaksel/");
-                    exit();
-                }else if($row['level'] == '11'){
-                    header("Location: ../operator/jaktim/");
-                    exit();
-                }else if($row['level'] == '12'){
-                    header("Location: ../operator/tangerang/");
-                    exit();                
+                }else if($row['level'] == '4'){
+                    header("Location: ../operator/tasikmalaya/");
+                    exit();              
                 } else {
                   header("Location: ../operator/tasikmalaya/");
                     exit();

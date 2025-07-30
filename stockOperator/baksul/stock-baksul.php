@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION["ssLoginPOS"])) {
   header("Location: ../../auth/login.php?pesan=belum_login");
-} elseif ($_SESSION["level"] != '8' && $_SESSION["level"] != '1') {
+} elseif ($_SESSION["level"] != '5' && $_SESSION["level"] != '1') {
   header("Location: ../../error-page.php?pesan=tolak_akses");
 }
 
@@ -18,7 +18,7 @@ require "../../template/header.php";
 require "../../template/navbar.php";
 require "../../template/sidebar.php"; 
 
-$stockBrg = getData("SELECT * FROM  tbl_barang_jakbar");
+$stockBrg = getData("SELECT * FROM  tbl_barang_tangerang");
 
 
 
@@ -38,10 +38,10 @@ if (empty($_GET['tanggal_dari'])) {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Stock Area Jakarta Barat</h1>
+            <h1 class="m-0">Stock Area Tangerang</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="<?= $main_url ?>pembelian/jakbar">Pembelian</a></li>
+            <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="<?= $main_url ?>pembelian/tangerang">Pembelian</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->

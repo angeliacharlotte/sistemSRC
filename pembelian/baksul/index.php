@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION["ssLoginPOS"])) {
   header("Location: ../../auth/login.php?pesan=belum_login");
-} elseif ($_SESSION["level"] != '12' && $_SESSION["level"] != '1') {
+} elseif ($_SESSION["level"] != '5' && $_SESSION["level"] != '1') {
   header("Location: ../../error-page.php?pesan=tolak_akses");
 }
  

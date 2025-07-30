@@ -2,9 +2,10 @@
 
 session_start();
 
-if(!isset($_SESSION["ssLoginPOS"])) {
-  header("location: ../auth/login.php");
-  exit();
+if (!isset($_SESSION["ssLoginPOS"])) {
+  header("Location: ../../auth/login.php?pesan=belum_login");
+} elseif ($_SESSION["level"] != '2' && $_SESSION["level"] != '1') {
+  header("Location: ../../error-page.php?pesan=tolak_akses");
 }
 
 require "../config/config.php";
@@ -68,10 +69,10 @@ if($msg =='updated') {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Area Purwakarta</h1>
+            <h1 class="m-0">Area Cinunuk</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="<?= $main_url ?>barang">Barang</a></li>
+            <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="<?= $main_url ?>operator/cinunuk/">Dashboard</a></li>
               <li class="breadcrumb-item active">Add Barang</li>
             </ol>
           </div><!-- /.col -->

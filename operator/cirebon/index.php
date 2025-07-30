@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION["ssLoginPOS"])) {
   header("Location: ../../auth/login.php?pesan=belum_login");
-} elseif ($_SESSION["level"] != '6') {
+} elseif ($_SESSION["level"] != '3') {
   header("Location: ../../error-page.php?pesan=tolak_akses");
 }
 
@@ -20,9 +20,6 @@ require "../../template/sidebar.php";
 
 $suppliers = getData("SELECT * FROM tbl_supplier");
 $supNum = count($suppliers);
-
-$customers = getData("SELECT * FROM tbl_customer_cirebon");
-$cusNum = count($customers);
 
 $barangs = getData("SELECT * FROM tbl_barang_cirebon");
 $barNum = count($barangs);
@@ -66,21 +63,6 @@ $barNum = count($barangs);
                 <i class="ion ion-android-bus"></i>
               </div>
               <a href="<?= $main_url?>supplier/data-supplier.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3><?= $cusNum ?></h3>
-
-                <p>Customer</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-stalker"></i>
-              </div>
-              <a href="<?= $main_url?>customer/customer_cirebon/data-customer.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

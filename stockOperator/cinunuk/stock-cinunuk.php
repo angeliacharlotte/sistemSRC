@@ -2,9 +2,10 @@
 
 session_start();
 
+
 if (!isset($_SESSION["ssLoginPOS"])) {
   header("Location: ../../auth/login.php?pesan=belum_login");
-} elseif ($_SESSION["level"] != '4' && $_SESSION["level"] !=1) {
+} elseif ($_SESSION["level"] != '2' && $_SESSION["level"] !=1) {
   header("Location: ../../error-page.php?pesan=tolak_akses");
 }
 
@@ -12,13 +13,13 @@ require "../../config/config.php";
 require "../../config/functions.php";
 require "../../module/mode-barang.php";
 
-$title = "Mutasi Stock - Inventory";
+
+$title = "Stock - Inventory";
 require "../../template/header.php";
 require "../../template/navbar.php";
 require "../../template/sidebar.php"; 
 
-$stockBrg = getData("SELECT * FROM  tbl_barang_bandung2");
-
+$stockBrg = getData("SELECT * FROM  tbl_barang");
 
 ?>
 
@@ -28,10 +29,10 @@ $stockBrg = getData("SELECT * FROM  tbl_barang_bandung2");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Stock Area Bandung2</h1>
+            <h1 class="m-0">Stock Area Cinunuk</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="<?= $main_url ?>pembelian/bandung2">Pembelian</a></li>
+            <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="<?= $main_url ?>pembelian/cinunuk">Pembelian</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->

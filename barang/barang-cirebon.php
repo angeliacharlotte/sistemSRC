@@ -2,9 +2,10 @@
 
 session_start();
 
-if(!isset($_SESSION["ssLoginPOS"])) {
-  header("location: ../auth/login.php");
-  exit();
+if (!isset($_SESSION["ssLoginPOS"])) {
+  header("Location: ../../auth/login.php?pesan=belum_login");
+} elseif ($_SESSION["level"] != '3' && $_SESSION["level"] != '1') {
+  header("Location: ../../error-page.php?pesan=tolak_akses");
 }
 
 require "../config/config.php";
@@ -71,7 +72,7 @@ if($msg =='updated') {
             <h1 class="m-0">Area Cirebon</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="<?= $main_url ?>barang/barang-cirebon.php">Barang</a></li>
+            <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="<?= $main_url ?>operator/cirebon">Dashboard</a></li>
               <li class="breadcrumb-item active">Add Barang</li>
             </ol>
           </div><!-- /.col -->

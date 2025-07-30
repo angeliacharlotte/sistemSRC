@@ -2,11 +2,13 @@
 
 session_start();
 
-if(!isset($_SESSION["ssLoginPOS"])) {
-  header("location: ../auth/login.php");
-  exit();
-}
+session_start();
 
+if (!isset($_SESSION["ssLoginPOS"])) {
+  header("Location: ../../auth/login.php?pesan=belum_login");
+} elseif ($_SESSION["level"] != '4') {
+  header("Location: ../../error-page.php?pesan=tolak_akses");
+}
 require "../config/config.php";
 require "../config/functions.php";
 require "../module/mode-setoran.php";

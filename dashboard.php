@@ -23,32 +23,9 @@ $userNum = count($users);
 $suppliers = getData("SELECT * FROM tbl_supplier");
 $supNum = count($suppliers);
 
-$customers = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT 
-  (SELECT COUNT(*) FROM tbl_customer) +
-  (SELECT COUNT(*) FROM tbl_customer_bandung) +
-  (SELECT COUNT(*) FROM tbl_customer_bandung2) +
-  (SELECT COUNT(*) FROM tbl_customer_bekasi) +
-  (SELECT COUNT(*) FROM tbl_customer_cirebon) +
-  (SELECT COUNT(*) FROM tbl_customer_garut) +
-  (SELECT COUNT(*) FROM tbl_customer_jakbar) +
-  (SELECT COUNT(*) FROM tbl_customer_jakpus) +
-  (SELECT COUNT(*) FROM tbl_customer_jaksel) +
-  (SELECT COUNT(*) FROM tbl_customer_jaktim) +
-  (SELECT COUNT(*) FROM tbl_customer_baksul) +
-  (SELECT COUNT(*) FROM tbl_customer_tasik) AS total"));
-$total = $customers['total'];
-
 $barangs = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT
   (SELECT COUNT(*) FROM tbl_barang) +
-  (SELECT COUNT(*) FROM tbl_barang_baksul) +
-  (SELECT COUNT(*) FROM tbl_barang_bandung2) +
-  (SELECT COUNT(*) FROM tbl_barang_bekasi) +
   (SELECT COUNT(*) FROM tbl_barang_cirebon) +
-  (SELECT COUNT(*) FROM tbl_barang_garut) +
-  (SELECT COUNT(*) FROM tbl_barang_jakbar) +
-  (SELECT COUNT(*) FROM tbl_barang_jakpus) +
-  (SELECT COUNT(*) FROM tbl_barang_jaksel) +
-  (SELECT COUNT(*) FROM tbl_barang_jaktim) +
   (SELECT COUNT(*) FROM tbl_barang_baksul) +
   (SELECT COUNT(*) FROM tbl_barang_tasik) AS total"));
 $total_barang = $barangs['total'];
@@ -66,7 +43,6 @@ $total_barang = $barangs['total'];
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= $main_url ?>dashboard.php">Home</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
@@ -110,20 +86,6 @@ $total_barang = $barangs['total'];
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3><?= $total ?></h3>
-
-                <p>Customer</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-stalker"></i>
-              </div>
-              <a href="<?= $main_url ?>customer" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->

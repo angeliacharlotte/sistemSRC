@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION["ssLoginPOS"])) {
   header("Location: ../../auth/login.php?pesan=belum_login");
-} elseif ($_SESSION["level"] != '3') {
+} elseif ($_SESSION["level"] != '2') {
   header("Location: ../../error-page.php?pesan=tolak_akses");
 }
 
@@ -44,7 +44,7 @@ if(isset($_POST['simpan'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Area Purwakarta</h1>
+            <h1 class="m-0">Area Cinunuk</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

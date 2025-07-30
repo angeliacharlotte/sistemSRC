@@ -30,62 +30,22 @@
         <p>Dashboard</p>
       </a>
       <?php elseif(userLogin()['level'] == 2): ?>
-        <a href="<?= $main_url ?>operator/bandung/" class="nav-link" <?= menuHome() ?>>
+        <a href="<?= $main_url ?>operator/cinunuk/" class="nav-link" <?= menuHome() ?>>
         <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
         <p>Dashboard</p>
       </a>
       <?php elseif(userLogin()['level'] == 3): ?>
-        <a href="<?= $main_url ?>operator/purwakarta/" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
-        <p>Dashboard</p>
-      </a>
-      <?php elseif(userLogin()['level'] == 4): ?>
-        <a href="<?= $main_url ?>operator/bandung2/" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
-        <p>Dashboard</p>
-      </a>
-      <?php elseif(userLogin()['level'] == 5): ?>
-        <a href="<?= $main_url ?>operator/bekasi/" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
-        <p>Dashboard</p>
-      </a>
-      <?php elseif(userLogin()['level'] == 6): ?>
         <a href="<?= $main_url ?>operator/cirebon/" class="nav-link" <?= menuHome() ?>>
         <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
         <p>Dashboard</p>
       </a>
-      <?php elseif(userLogin()['level'] == 7): ?>
-        <a href="<?= $main_url ?>operator/garut/" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
-        <p>Dashboard</p>
-      </a>
-      <?php elseif(userLogin()['level'] == 8): ?>
-        <a href="<?= $main_url ?>operator/jakbar/" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
-        <p>Dashboard</p>
-      </a>
-      <?php elseif(userLogin()['level'] == 9): ?>
-        <a href="<?= $main_url ?>operator/jakpus/" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
-        <p>Dashboard</p>
-      </a>
-      <?php elseif(userLogin()['level'] == 10): ?>
-        <a href="<?= $main_url ?>operator/jaksel/" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
-        <p>Dashboard</p>
-      </a>
-      <?php elseif(userLogin()['level'] == 11): ?>
-        <a href="<?= $main_url ?>operator/jaktim/" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
-        <p>Dashboard</p>
-      </a>
-      <?php elseif(userLogin()['level'] == 12): ?>
-        <a href="<?= $main_url ?>operator/tangerang/" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
-        <p>Dashboard</p>
-      </a>
-      <?php elseif(userLogin()['level'] == 13): ?>
+      <?php elseif(userLogin()['level'] == 4): ?>
         <a href="<?= $main_url ?>operator/tasikmalaya/" class="nav-link" <?= menuHome() ?>>
+        <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
+        <p>Dashboard</p>
+      </a>
+      <?php elseif(userLogin()['level'] == 5): ?>
+        <a href="<?= $main_url ?>operator/baksul/" class="nav-link" <?= menuHome() ?>>
         <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
         <p>Dashboard</p>
       </a>
@@ -119,133 +79,41 @@
           </p>
           </a>
         </li>
-        <!-- Customer -->
-        <!-- <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="#" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Customer
-            <i class="fas fa-angle-left right"></i>
-          </p>
-          </a>
-          <ul class="nav nav-treeview ml-2">            
-            <li class="nav-item">
-              <a href="<?= $main_url ?>customer/customer_cinunuk/data-customer.php" class="nav-link <?= menuCustomer() ?>">
-                <i class="far fa-circle nav-icon text-sm"></i>
-                <p>Cinunuk</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= $main_url ?>customer/customer_cirebon/data-customer.php" class="nav-link <?= menuCustomer() ?>">
-                <i class="far fa-circle nav-icon text-sm"></i>
-                <p>Cirebon</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= $main_url ?>customer/customer_tasik/data-customer.php" class="nav-link <?= menuCustomer() ?>">
-                <i class="far fa-circle nav-icon text-sm"></i>
-                <p>Tasikmalaya</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= $main_url ?>customer/customer_baksul/data-customer.php" class="nav-link <?= menuCustomer() ?>">
-                <i class="far fa-circle nav-icon text-sm"></i>
-                <p>Baksul</p>
-              </a>
-            </li>
-          </ul>
-        </li> -->
-      </ul>
+        </ul>
+    </li>
+    <!-- Stock Barang untuk Operator -->
+    <?php elseif (userLogin()['level'] == 2): ?>
+    <li class="nav-item">
+      <a href="<?= $main_url ?>stockOperator/cinunuk/stock-cinunuk.php" class="nav-link" <?= menuHome() ?>> 
+        <i class="nav-icon fas fa-box text-sm"></i>
+        <p>Halaman Operator</p>
+      </a>
     </li>
     <?php elseif (userLogin()['level'] == 3): ?>
-    <!-- Stock Barang untuk Operator -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/purwakarta/stock-purwakarta.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 2): ?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/bandung/stock-bandung.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 4): ?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/bandung2/stock-bandung2.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 5): ?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/bekasi/stock-bekasi.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 6): ?>
       <li class="nav-item">
       <a href="<?= $main_url ?>stockOperator/cirebon/stock-cirebon.php" class="nav-link" <?= menuHome() ?>> 
         <i class="nav-icon fas fa-box text-sm"></i>
         <p>Halaman Operator</p>
       </a>
     </li>
-    <?php elseif (userLogin()['level'] == 7): ?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/garut/stock-garut.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 8): ?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/jakbar/stock-jakbar.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 9): ?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/jakpus/stock-jakpus.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 10): ?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/jaksel/stock-jaksel.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 11): ?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/jaktim/stock-jaktim.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 12): ?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>stockOperator/tangerang/stock-tangerang.php" class="nav-link" <?= menuHome() ?>> 
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Halaman Operator</p>
-      </a>
-    </li>
-    <?php elseif (userLogin()['level'] == 13): ?>
+    <?php elseif (userLogin()['level'] == 4): ?>
       <li class="nav-item">
       <a href="<?= $main_url ?>stockOperator/tasikmalaya/stock-tasik.php" class="nav-link" <?= menuHome() ?>> 
         <i class="nav-icon fas fa-box text-sm"></i>
         <p>Halaman Operator</p>
       </a>
     </li>
+    <?php elseif (userLogin()['level'] == 5): ?>
+      <li class="nav-item">
+      <a href="<?= $main_url ?>stockOperator/baksul/stock-baksul.php" class="nav-link" <?= menuHome() ?>> 
+        <i class="nav-icon fas fa-box text-sm"></i>
+        <p>Halaman Operator</p>
+      </a>
+    </li>
     <?php endif; ?>
-
+  <!-- END Stock Barang untuk Operator -->
     <li class="nav-header">Transaksi</li>
-    <!-- Pembelian -->
+    <!-- Pembelian Admin -->
     <?php if(userLogin()['level'] == 1): ?>
     <li class="nav-item has-treeview <?= menuMaster()?>">
       <a href="#" class="nav-link">
@@ -294,48 +162,18 @@
         </li>
       </ul>
     </li>
+    <!-- Pembelian untuk Operator Cinunuk-->
     <?php elseif (userLogin()['level'] == 2): ?>
-    <!-- Pembelian untuk Operator Bandung-->
     <li class="nav-item has-treeview <?= menuMaster()?>">
-      <a href="<?= $main_url ?>pembelian/bandung"  class="nav-link">
+      <a href="<?= $main_url ?>pembelian/cinunuk"  class="nav-link">
         <i class="nav-icon fas fa-shopping-cart text-sm"></i>
         <p>
           Pembelian
         </p>
       </a>
       </li>
+    <!-- Pembelian untuk Operator Cirebon -->
     <?php elseif (userLogin()['level'] == 3): ?>
-    <!-- Pembelian untuk Operator Purwakarta -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>pembelian/purwakarta"  class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
-          <p>
-            Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 4): ?>
-    <!-- Pembelian untuk Operator bandung2 -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>pembelian/bandung2"  class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
-          <p>
-            Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 5): ?>
-    <!-- Pembelian untuk Operator bekasi -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>pembelian/bekasi"  class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
-          <p>
-            Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 6): ?>
-    <!-- Pembelian untuk Operator cirebon -->
       <li class="nav-item has-treeview <?= menuMaster()?>">
         <a href="<?= $main_url ?>pembelian/cirebon"  class="nav-link">
           <i class="nav-icon fas fa-shopping-cart text-sm"></i>
@@ -344,68 +182,8 @@
           </p>
         </a>
         </li>
-    <?php elseif (userLogin()['level'] == 7): ?>
-    <!-- Pembelian untuk Operator garut -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>pembelian/garut"  class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
-          <p>
-            Pembelian
-          </p>
-        </a>
-        </li>
-        <?php elseif (userLogin()['level'] == 8): ?>
-    <!-- Pembelian untuk Operator jakbar -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>pembelian/jakbar"  class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
-          <p>
-            Pembelian
-          </p>
-        </a>
-        </li>
-        <?php elseif (userLogin()['level'] == 9): ?>
-    <!-- Pembelian untuk Operator jakpus -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>pembelian/jakpus"  class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
-          <p>
-            Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 10): ?>
-    <!-- Pembelian untuk Operator jaksel -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>pembelian/jaksel"  class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
-          <p>
-            Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 11): ?>
-    <!-- Pembelian untuk Operator jaktim -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>pembelian/jaktim"  class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
-          <p>
-            Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 12): ?>
-    <!-- Pembelian untuk Operator tangerang -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>pembelian/tangerang"  class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
-          <p>
-            Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 13): ?>
-    <!-- Pembelian untuk Operator tasikmalaya -->
+    <!-- Pembelian untuk Operator Tasikmalaya -->
+    <?php elseif (userLogin()['level'] == 4): ?>
       <li class="nav-item has-treeview <?= menuMaster()?>">
         <a href="<?= $main_url ?>pembelian/tasikmalaya"  class="nav-link">
           <i class="nav-icon fas fa-shopping-cart text-sm"></i>
@@ -414,8 +192,18 @@
           </p>
         </a>
         </li>
+    <!-- Pembelian untuk Operator Baksul -->
+    <?php elseif (userLogin()['level'] == 5): ?>
+      <li class="nav-item has-treeview <?= menuMaster()?>">
+        <a href="<?= $main_url ?>pembelian/baksul"  class="nav-link">
+          <i class="nav-icon fas fa-shopping-cart text-sm"></i>
+          <p>
+            Pembelian
+          </p>
+        </a>
+        </li>
     <?php endif; ?>
-    <!-- Penjualan -->
+    <!-- Penjualan untuk Admin -->
     <?php if(userLogin()['level'] == 1): ?>
     <li class="nav-item has-treeview <?= menuMaster()?>">
       <a href="#" class="nav-link">
@@ -464,98 +252,34 @@
         </li>
       </ul>
     </li>
+    <!-- Penjualan untuk Operator Cinunuk -->
     <?php elseif(userLogin()['level'] == 2): ?>
-    <!-- Penjualan untuk Operator Bandung -->
     <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/bandung" class="nav-link">
+      <a href="<?= $main_url ?>penjualan/cinunuk" class="nav-link">
         <i class="nav-icon fas fa-box text-sm"></i>
         <p>Penjualan</p>
       </a>
     </li>
+    <!-- Penjualan untuk Operator Cirebon -->
     <?php elseif(userLogin()['level'] == 3): ?>
-    <!-- Penjualan untuk Operator purwakarta -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/purwakarta" class="nav-link">
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 4): ?>
-    <!-- Penjualan untuk Operator Bandung2 -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/bandung2" class="nav-link">
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 5): ?>
-    <!-- Penjualan untuk Operator bekasi -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/bekasi" class="nav-link">
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 6): ?>
-    <!-- Penjualan untuk Operator cirebon -->
     <li class="nav-item">
       <a href="<?= $main_url ?>penjualan/cirebon" class="nav-link">
         <i class="nav-icon fas fa-box text-sm"></i>
         <p>Penjualan</p>
       </a>
     </li>
-    <?php elseif(userLogin()['level'] == 7): ?>
-    <!-- Penjualan untuk Operator garut -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/garut" class="nav-link">
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 8): ?>
-    <!-- Penjualan untuk Operator jakbar -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/jakbar" class="nav-link">
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 9): ?>
-    <!-- Penjualan untuk Operator jakpus -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/jakpus" class="nav-link">
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 10): ?>
-    <!-- Penjualan untuk Operator jaksel -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/jaksel" class="nav-link">
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 11): ?>
-    <!-- Penjualan untuk Operator jaktim -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/jaktim" class="nav-link">
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 12): ?>
-    <!-- Penjualan untuk Operator Tangerang -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>penjualan/Tangerang" class="nav-link">
-        <i class="nav-icon fas fa-box text-sm"></i>
-        <p>Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 13): ?>
-    <!-- Penjualan untuk Operator tasikmalaya -->
+    <!-- Penjualan untuk Operator Tasikmalaya -->
+    <?php elseif(userLogin()['level'] == 4): ?>
     <li class="nav-item">
       <a href="<?= $main_url ?>penjualan/tasikmalaya" class="nav-link">
+        <i class="nav-icon fas fa-box text-sm"></i>
+        <p>Penjualan</p>
+      </a>
+    </li>
+    <!-- Penjualan untuk Operator Baksul -->
+    <?php elseif(userLogin()['level'] == 5): ?>
+    <li class="nav-item">
+      <a href="<?= $main_url ?>penjualan/baksul" class="nav-link">
         <i class="nav-icon fas fa-box text-sm"></i>
         <p>Penjualan</p>
       </a>
@@ -574,77 +298,28 @@
     </li>
     <?php elseif(userLogin()['level'] == 2) :?>
       <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_bandung.php" class="nav-link" <?= menuHome() ?>>
+      <a href="<?= $main_url ?>setoran/form-setoran.php" class="nav-link" <?= menuHome() ?>>
         <i class="nav-icon fas fa-money-bill text-sm"></i>
         <p>Data Setoran</p>
       </a>      
     </li>
     <?php elseif(userLogin()['level'] == 3) :?>
       <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran.php" class="nav-link" <?= menuHome() ?>>
+      <a href="<?= $main_url ?>setoran/form-setoran_cirebon.php" class="nav-link" <?= menuHome() ?>>
         <i class="nav-icon fas fa-money-bill text-sm"></i>
         <p>Data Setoran</p>
       </a>      
     </li>
     <?php elseif(userLogin()['level'] == 4) :?>
       <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_bandung.php" class="nav-link" <?= menuHome() ?>>
+      <a href="<?= $main_url ?>setoran/form-setoran_tasik.php" class="nav-link" <?= menuHome() ?>>
         <i class="nav-icon fas fa-money-bill text-sm"></i>
         <p>Data Setoran</p>
       </a>      
     </li>
     <?php elseif(userLogin()['level'] == 5) :?>
       <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_bekasi.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 6) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_cirebon.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 7) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_garut.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 7) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_jakbar.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 7) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_jakpus.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 7) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_jaksel.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 7) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_jaktim.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 7) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_tangerang.php" class="nav-link" <?= menuHome() ?>>
+      <a href="<?= $main_url ?>setoran/form-setoran_baksul.php" class="nav-link" <?= menuHome() ?>>
         <i class="nav-icon fas fa-money-bill text-sm"></i>
         <p>Data Setoran</p>
       </a>      
@@ -699,48 +374,18 @@
         </li>
       </ul>
     </li>
+    <!-- Laporan Pembelian untuk Operator cinunuk-->
     <?php elseif (userLogin()['level'] == 2): ?>
-    <!-- Pembelian untuk Operator Bandung-->
     <li class="nav-item has-treeview <?= menuMaster()?>">
-      <a href="<?= $main_url ?>LaporanPembelian/bandung"  class="nav-link">
+      <a href="<?= $main_url ?>LaporanPembelian/cinunuk"  class="nav-link">
         <i class="nav-icon fas fa-chart-pie text-sm"></i>
         <p>
           Laporan Pembelian
         </p>
       </a>
       </li>
+    <!-- Laporan Pembelian untuk Operator Cirebon-->
     <?php elseif (userLogin()['level'] == 3): ?>
-    <!-- Pembelian untuk Operator Purwakarta -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/purwakarta"  class="nav-link">
-          <i class="nav-icon fas fa-chart-pie text-sm"></i>
-          <p>
-            Laporan Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 4): ?>
-    <!-- Pembelian untuk Operator bandung2 -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/bandung2"  class="nav-link">
-          <i class="nav-icon fas fa-chart-pie text-sm"></i>
-          <p>
-            Laporan Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 5): ?>
-    <!-- Pembelian untuk Operator bekasi -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/bekasi"  class="nav-link">
-          <i class="nav-icon fas fa-chart-pie text-sm"></i>
-          <p>
-            Laporan Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 6): ?>
-    <!-- Pembelian untuk Operator cirebon -->
       <li class="nav-item has-treeview <?= menuMaster()?>">
         <a href="<?= $main_url ?>LaporanPembelian/cirebon"  class="nav-link">
           <i class="nav-icon fas fa-chart-pie text-sm"></i>
@@ -749,76 +394,26 @@
           </p>
         </a>
         </li>
-    <?php elseif (userLogin()['level'] == 7): ?>
-    <!-- Pembelian untuk Operator garut -->
+    <!-- Laporan Pembelian untuk Operator tasikmalaya-->
+    <?php elseif (userLogin()['level'] == 4): ?>
       <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/garut"  class="nav-link">
+        <a href="<?= $main_url ?>LaporanPembelian/tasikmalaya"  class="nav-link">
           <i class="nav-icon fas fa-chart-pie text-sm"></i>
           <p>
             Laporan Pembelian
           </p>
         </a>
         </li>
-        <?php elseif (userLogin()['level'] == 8): ?>
-    <!-- Pembelian untuk Operator jakbar -->
+    <!-- Laporan Pembelian untuk Operator Baksul-->
+    <?php elseif (userLogin()['level'] == 5): ?>
       <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/jakbar"  class="nav-link">
+        <a href="<?= $main_url ?>LaporanPembelian/baksul"  class="nav-link">
           <i class="nav-icon fas fa-chart-pie text-sm"></i>
           <p>
             Laporan Pembelian
           </p>
         </a>
         </li>
-        <?php elseif (userLogin()['level'] == 9): ?>
-    <!-- Pembelian untuk Operator jakpus -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/jakpus"  class="nav-link">
-          <i class="nav-icon fas fa-chart-pie text-sm"></i>
-          <p>
-            Laporan Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 10): ?>
-    <!-- Pembelian untuk Operator jaksel -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/jaksel"  class="nav-link">
-          <i class="nav-icon fas fa-chart-pie text-sm"></i>
-          <p>
-            Laporan Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 11): ?>
-    <!-- Pembelian untuk Operator jaktim -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/jaktim"  class="nav-link">
-          <i class="nav-icon fas fa-chart-pie text-sm"></i>
-          <p>
-            Laporan Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 12): ?>
-    <!-- Pembelian untuk Operator tangerang -->
-      <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/tangerang"  class="nav-link">
-          <i class="nav-icon fas fa-chart-pie text-sm"></i>
-          <p>
-            Laporan Pembelian
-          </p>
-        </a>
-        </li>
-    <?php elseif (userLogin()['level'] == 13): ?>
-    <!-- Pembelian untuk Operator tasikmalaya -->
-     <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/tangerang"  class="nav-link">
-          <i class="nav-icon fas fa-chart-pie text-sm"></i>
-          <p>
-            Laporan Pembelian
-          </p>
-        </a>
-        </li></p>
     <?php endif; ?>
 <!-- Laporan Penjualan -->
     <?php if(userLogin()['level'] == 1): ?>
@@ -870,98 +465,34 @@
       </ul>
     </li>
 
+    <!-- Laporan Penjualan untuk Operator cinunuk -->
     <?php elseif(userLogin()['level'] == 2): ?>
-    <!-- Penjualan untuk Operator Bandung -->
     <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/bandung" class="nav-link">
+      <a href="<?= $main_url ?>LaporanPenjualan/cinunuk" class="nav-link">
         <i class="nav-icon fas fa-chart-line text-sm"></i>
         <p>Laporan Penjualan</p>
       </a>
     </li>
+    <!-- Laporan Penjualan untuk Operator Cirebon -->
     <?php elseif(userLogin()['level'] == 3): ?>
-    <!-- Penjualan untuk Operator purwakarta -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/purwakarta" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>Laporan Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 4): ?>
-    <!-- Penjualan untuk Operator Bandung2 -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/bandung2" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>Laporan Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 5): ?>
-    <!-- Penjualan untuk Operator bekasi -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/bekasi" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>Laporan Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 6): ?>
-    <!-- Penjualan untuk Operator cirebon -->
     <li class="nav-item">
       <a href="<?= $main_url ?>LaporanPenjualan/cirebon" class="nav-link">
         <i class="nav-icon fas fa-chart-line text-sm"></i>
         <p>Laporan Penjualan</p>
       </a>
     </li>
-    <?php elseif(userLogin()['level'] == 7): ?>
-    <!-- Penjualan untuk Operator garut -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/garut" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>Laporan Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 8): ?>
-    <!-- Penjualan untuk Operator jakbar -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/jakbar" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>Laporan Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 9): ?>
-    <!-- Penjualan untuk Operator jakpus -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/jakpus" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>Laporan Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 10): ?>
-    <!-- Penjualan untuk Operator jaksel -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/jaksel" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>Laporan Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 11): ?>
-    <!-- Penjualan untuk Operator jaktim -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/jaktim" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>Laporan Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 12): ?>
-    <!-- Penjualan untuk Operator Tangerang -->
-    <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/Tangerang" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>Laporan Penjualan</p>
-      </a>
-    </li>
-    <?php elseif(userLogin()['level'] == 13): ?>
-    <!-- Penjualan untuk Operator tasikmalaya -->
+    <!-- Laporan Penjualan untuk Operator tasikmalaya -->
+    <?php elseif(userLogin()['level'] == 4): ?>
     <li class="nav-item">
       <a href="<?= $main_url ?>LaporanPenjualan/tasikmalaya" class="nav-link">
+        <i class="nav-icon fas fa-chart-line text-sm"></i>
+        <p>Laporan Penjualan</p>
+      </a>
+    </li>
+    <!-- Laporan Penjualan untuk Operator Baksul -->
+    <?php elseif(userLogin()['level'] == 5): ?>
+    <li class="nav-item">
+      <a href="<?= $main_url ?>LaporanPenjualan/baksul" class="nav-link">
         <i class="nav-icon fas fa-chart-line text-sm"></i>
         <p>Laporan Penjualan</p>
       </a>

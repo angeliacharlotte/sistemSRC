@@ -46,6 +46,7 @@ function insert($data) {
 
 }
 function delete($id, $foto){
+
     global $koneksi;
 
     $sqlDel = "DELETE FROM tbl_user WHERE userid = $id";
@@ -55,11 +56,7 @@ function delete($id, $foto){
     }
 
     return mysqli_affected_rows($koneksi);
-}
-
-
-
-function selectUser1($level) {
+}function selectUser1($level) {
     $result = null;
     if ($level == 1){
         $result = "selected";
@@ -92,62 +89,6 @@ function selectUser4($level) {
 function selectUser5($level) {
     $result = null;
     if ($level == 5){
-        $result = "selected";
-    }
-    return $result;
-}
-function selectUser6($level) {
-    $result = null;
-    if ($level == 6){
-        $result = "selected";
-    }
-    return $result;
-}
-function selectUser7($level) {
-    $result = null;
-    if ($level == 7){
-        $result = "selected";
-    }
-    return $result;
-}
-function selectUser8($level) {
-    $result = null;
-    if ($level == 8){
-        $result = "selected";
-    }
-    return $result;
-}
-function selectUser9($level) {
-    $result = null;
-    if ($level == 9){
-        $result = "selected";
-    }
-    return $result;
-}
-function selectUser10($level) {
-    $result = null;
-    if ($level == 10){
-        $result = "selected";
-    }
-    return $result;
-}
-function selectUser11($level) {
-    $result = null;
-    if ($level == 11){
-        $result = "selected";
-    }
-    return $result;
-}
-function selectUser12($level) {
-    $result = null;
-    if ($level == 12){
-        $result = "selected";
-    }
-    return $result;
-}
-function selectUser13($level) {
-    $result = null;
-    if ($level == 13){
         $result = "selected";
     }
     return $result;

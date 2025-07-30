@@ -2,9 +2,10 @@
 
 session_start();
 
-if(!isset($_SESSION["ssLoginPOS"])) {
-  header("location: ../auth/login.php");
-  exit();
+if (!isset($_SESSION["ssLoginPOS"])) {
+  header("Location: ../../auth/login.php?pesan=belum_login");
+} elseif ($_SESSION["level"] != '5') {
+  header("Location: ../../error-page.php?pesan=tolak_akses");
 }
 
 require "../config/config.php";
@@ -19,7 +20,7 @@ require "../template/sidebar.php";
 
 
 if(isset($_POST['simpan'])){  
-    if (insert_garut($_POST)) {
+    if (insert_baksul($_POST)) {
          $alert = '<div class="alert alert-success alert-dismissible">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <h5><i class="icon fas fa-check"></i> Alert!</h5>
@@ -36,7 +37,7 @@ if(isset($_POST['simpan'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Area Garut</h1>
+            <h1 class="m-0">Area Baksul</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -62,7 +63,7 @@ if(isset($_POST['simpan'])){
                         <div class="col-lg-5 mb-3 pr-3">
                             <div class="form-group">
                             <label for="kode">Kode Setoran</label>
-                            <input type="text" class="form-control" id="id_setoran" name="id_setoran" value="<?=  generateIdgarut()  ?>" readonly>
+                            <input type="text" class="form-control" id="id_setoran" name="id_setoran" value="<?=  generateIdbaksul()  ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="name">Tanggal *</label>
