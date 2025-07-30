@@ -44,6 +44,7 @@ require "../../template/sidebar.php";
             <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-list-ul fa-sm"></i> Data User</h3>
                 <div class="card-tools">
+                    <a href="<?= $main_url ?>user/admin/add-role.php" class="btn btn-sm btn-primary "><i class="fas fa-plus"></i> Add Sales</a>
                     <a href="<?= $main_url ?>user/admin/add-user.php" class="btn btn-sm btn-primary "><i class="fas fa-plus"></i> Add User</a>
                 </div>
             </div>

@@ -77,7 +77,7 @@ while($data = mysqli_fetch_array($result)){
     $sheet->setCellValue('F'.$row, $data['qty']);
     $sheet->setCellValue('G'.$row, $data['suplier']);
     $sheet->setCellValue('H'.$row, $data['harga_beli']);
-    $sheet->setCellValue('I'.$row, $data['jml_harga']);
+    $sheet->setCellValue('I'.$row, $data['total']);
     $sheet->setCellValue('J'.$row, $data['keterangan']);
 
     $no++;

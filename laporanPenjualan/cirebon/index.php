@@ -27,18 +27,18 @@ $alert = '';
 
 if(empty($_GET['tanggal_dari'])) {  
   $tanggal_hari_ini = date('Y-m-d');
-  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail_cirebon.*, tbl_jual_head_cirebon.customer, tbl_jual_head_cirebon.keterangan,  tbl_jual_head_cirebon.jml_bayar
+  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail_cirebon.*, tbl_jual_head_cirebon.jml_bayar
         FROM tbl_jual_detail_cirebon JOIN tbl_jual_head_cirebon ON tbl_jual_detail_cirebon.no_jual = tbl_jual_head_cirebon.no_jual WHERE tbl_jual_detail_cirebon.tgl_jual = '$tanggal_hari_ini' ORDER BY tbl_jual_detail_cirebon.tgl_jual DESC");
 }else if(empty($_GET['tanggal_sampai'])){
   $tanggal_dari = $_GET['tanggal_dari'];
   $tanggal_hari_ini = date('Y-m-d');
 //   $tanggal_sampai = $_GET['tanggal_sampai'];
-  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail_cirebon.*, tbl_jual_head_cirebon.customer, tbl_jual_head_cirebon.keterangan,  tbl_jual_head_cirebon.jml_bayar
+  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail_cirebon.*, tbl_jual_head_cirebon.jml_bayar
         FROM tbl_jual_detail_cirebon JOIN tbl_jual_head_cirebon ON tbl_jual_detail_cirebon.no_jual = tbl_jual_head_cirebon.no_jual WHERE tbl_jual_detail_cirebon.tgl_jual BETWEEN '$tanggal_dari' AND '$tanggal_hari_ini' ORDER BY tbl_jual_detail_cirebon.tgl_jual DESC");
 }else{
     $tanggal_dari = $_GET['tanggal_dari'];
   $tanggal_sampai = $_GET['tanggal_sampai'];
-  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail_cirebon.*, tbl_jual_head_cirebon.customer, tbl_jual_head_cirebon.keterangan,  tbl_jual_head_cirebon.jml_bayar
+  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail_cirebon.*, tbl_jual_head_cirebon.jml_bayar
         FROM tbl_jual_detail_cirebon JOIN tbl_jual_head_cirebon ON tbl_jual_detail_cirebon.no_jual = tbl_jual_head_cirebon.no_jual WHERE tbl_jual_detail_cirebon.tgl_jual BETWEEN '$tanggal_dari' AND '$tanggal_sampai' ORDER BY tbl_jual_detail_cirebon.tgl_jual DESC");
 }
 
@@ -108,10 +108,8 @@ if (empty($_GET['tanggal_dari'])) {
                                 <th>Kode Barang</th>
                                 <th>Nama Barang</th>
                                 <th>QTY</th>
-                                <th>Supplier</th>
                                 <th>Harga</th>
                                 <th>Total</th>
-                                <th>Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -125,10 +123,8 @@ if (empty($_GET['tanggal_dari'])) {
                                     <td><?= $brg['kode_brg'] ?></td>
                                     <td><?= $brg['nama_brg'] ?></td>
                                     <td><?= $brg['qty'] ?></td>
-                                    <td><?= $brg['customer'] ?></td>
                                     <td class="text-center"><?= number_format($brg['harga_jual'],0,',','.' )?></td>
                                     <td class="text-center"><?= number_format($brg['jml_bayar'],0,',','.' )?></td>
-                                    <td><?= $brg['keterangan'] ?></td>
 
                                 </tr>
                             <?php

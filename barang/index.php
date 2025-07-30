@@ -26,30 +26,14 @@ $alert = '';
 $cabang = $_GET['cabang'] ?? '';
 
 // Query berdasarkan select
-if ($cabang === 'Purwakarta') {
+if ($cabang === 'Cinunuk') {
     $query = "SELECT * FROM tbl_barang";
-} elseif($cabang === 'Bekasi') {
-    $query = "SELECT * FROM tbl_barang_bekasi";
-}elseif($cabang === 'Bandung') {
-    $query = "SELECT * FROM tbl_barang_bandung";
-}elseif($cabang === 'Bandung2') {
-    $query = "SELECT * FROM tbl_barang_bandung2";
 }elseif($cabang === 'Cirebon') {
     $query = "SELECT * FROM tbl_barang_cirebon";
-}elseif($cabang === 'Garut') {
-    $query = "SELECT * FROM tbl_barang_garut";
-}elseif($cabang === 'JakartaBarat') {
-    $query = "SELECT * FROM tbl_barang_jakbar";
-}elseif($cabang === 'JakartaSelatan') {
-    $query = "SELECT * FROM tbl_barang_jaksel";
-}elseif($cabang === 'JakartaPusat') {
-    $query = "SELECT * FROM tbl_barang_jakpus";
-}elseif($cabang === 'JakartaTimur') {
-    $query = "SELECT * FROM tbl_barang_jaktim";
-}elseif($cabang === 'Tangerang') {
-    $query = "SELECT * FROM tbl_barang_tangerang";
 }elseif($cabang === 'Tasikmalaya') {
     $query = "SELECT * FROM tbl_barang_tasik";
+}elseif($cabang === 'Baksul') {
+    $query = "SELECT * FROM tbl_barang_baksul";
 } else {
     $query = "";
 }
@@ -59,7 +43,15 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
 if($msg =='deleted') {
     $id = $_GET['id'];
     $gbr = $_GET['gbr'];
-    delete($id, $gbr);
+    if ($cabang === 'Cinunuk') {
+        delete($id, $gbr);
+    } elseif ($cabang === 'Cirebon') {
+        delete_cirebon($id, $gbr);
+    } elseif ($cabang === 'Tasikmalaya') {
+        delete_tasik($id, $gbr);
+    } elseif ($cabang === 'Baksul') {
+        delete_baksul($id, $gbr);
+    }
     $alert = "<script>
             $(document).ready(function(){
                 $(document).Toasts('create',{
@@ -100,7 +92,7 @@ if($msg =='updated') {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Area Purwakarta</h1>
+            <h1 class="m-0">Data Barang</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="<?= $main_url ?>barang">Barang</a></li>
@@ -119,8 +111,7 @@ if($msg =='updated') {
                 }?>
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-list fa-sm"></i> Data Barang</h3>
-                    <a href="<?= $main_url ?>barang/form-barang.php" class="mr-2 btn btn-sm btn-primary float-right"><i class="fas fa-plus fa-sm"></i> Add Barang</a>
-                </div>
+                    </div>
                 <div class="card-body table-responsive p-3">
                   <form method="GET" class="d-flex align-items-center gap-2 mb-3 ">
             <div class="col-md-2">
@@ -128,25 +119,17 @@ if($msg =='updated') {
                         data-bs-target="#exampleModal">Add Barang</button></div>
             <select class="form-select" name="cabang" required>
               <option value="" disabled <?= $cabang == '' ? 'selected' : '' ?>>Pilih Area Cabang</option>
-              <option value="Purwakarta" <?= $cabang == 'Purwakarta' ? 'selected' : '' ?>>Purwakarta</option>
-              <option value="Bekasi" <?= $cabang == 'Bekasi' ? 'selected' : '' ?>>Bekasi</option>
-              <option value="Bandung" <?= $cabang == 'Bandung' ? 'selected' : '' ?>>Bandung</option>
-              <option value="Bandung2" <?= $cabang == 'Bandung2' ? 'selected' : '' ?>>Bandung2</option>
+              <option value="Cinunuk" <?= $cabang == 'Cinunuk' ? 'selected' : '' ?>>Cinunuk</option>
               <option value="Cirebon" <?= $cabang == 'Cirebon' ? 'selected' : '' ?>>Cirebon</option>
-              <option value="Garut" <?= $cabang == 'Garut' ? 'selected' : '' ?>>Garut</option>
-              <option value="JakartaBarat" <?= $cabang == 'JakartaBarat' ? 'selected' : '' ?>>Jakarta Barat</option>
-              <option value="JakartaPusat" <?= $cabang == 'JakartaPusat' ? 'selected' : '' ?>>Jakarta Pusat</option>
-              <option value="JakartaSelatan" <?= $cabang == 'JakartaSelatan' ? 'selected' : '' ?>>Jakarta Selatan</option>
-              <option value="JakartaTimur" <?= $cabang == 'JakartaTimur' ? 'selected' : '' ?>>Jakarta Timur</option>
-              <option value="Tangerang" <?= $cabang == 'Tangerang' ? 'selected' : '' ?>>Tangerang</option>
               <option value="Tasikmalaya" <?= $cabang == 'Tasikmalaya' ? 'selected' : '' ?>>Tasikmalaya</option>
+              <option value="Baksul" <?= $cabang == 'Baksul' ? 'selected' : '' ?>>Baksul</option>
               <!-- Tambah area lain di sini -->
             </select>
             <button type="submit" class="btn btn-primary">Tampilkan</button>
           </form>
 
           <?php if ($cabang !== '') : ?>
-            <span>Laporan Setoran Area: <strong><?= htmlspecialchars($cabang) ?></strong></span>
+            <span>Laporan Barang Area: <strong><?= htmlspecialchars($cabang) ?></strong></span>
                     <table class="table table-hover text-nowrap" id="tblData">
                         <thead>
                             <tr>
@@ -175,9 +158,20 @@ if($msg =='updated') {
                                     <td style="vertical-align: middle;"><?= $str['stock'] ?></td>
                                     <td style="vertical-align: middle;"><?= $str['satuan'] ?></td>
                                     <td style="vertical-align: middle;">
-                                        <a href="form-barang.php?id=<?= $str['id_barang'] ?>&msg=editing" class="btn btn-warning btn-sm" title="edit barang" ><i class="fas fa-pen"></i></a>
-                                        <a href="?id=<?= $str['id_barang'] ?>&gbr=<?= $str['gambar']?>&msg=deleted" class="btn btn-danger btn-sm" title="hapus barang" onclick="return confirm('Anda yakin akan menghapus barang ini?')"><i class="fas fa-trash"></i></a>
-                                    </td>
+                                    <?php
+                                    // Tentukan file form sesuai cabang
+                                    $formFile = 'form-barang.php';
+                                    if ($cabang === 'Cirebon') {
+                                        $formFile = 'form-barang-cirebon.php';
+                                    } elseif ($cabang === 'Tasikmalaya') {
+                                        $formFile = 'form-barang-tasik.php';
+                                    } elseif ($cabang === 'Baksul') {
+                                        $formFile = 'form-barang-baksul.php';
+                                    }
+                                    ?>
+                                    <a href="<?= $formFile ?>?id=<?= $str['id_barang'] ?>&msg=editing&cabang=<?= urlencode($cabang) ?>" class="btn btn-warning btn-sm" title="edit barang" ><i class="fas fa-pen"></i></a>
+                                    <a href="?id=<?= $str['id_barang'] ?>&gbr=<?= $str['gambar']?>&msg=deleted&cabang=<?= urlencode($cabang) ?>" class="btn btn-danger btn-sm" title="hapus barang" onclick="return confirm('Anda yakin akan menghapus barang ini?')"><i class="fas fa-trash"></i></a>
+                                </td>
                                 </tr>
                         </tbody>
                         <?php endwhile; else: ?>
@@ -195,33 +189,25 @@ if($msg =='updated') {
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Export Excel Presensi Harian</h5>
+            <h5 class="modal-title">Pilih Area</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form method="POST" action="<?= $main_url ?>laporanSetoran/rekap_setoran_excel.php">
-            <div class="modal-body">              
-              <select class="form-select" name="cabang" required>
+          <form id="formCabangModal">
+          <div class="modal-body">              
+            <select class="form-select" name="cabang" id="selectCabangModal" required>
               <option value="" disabled <?= $cabang == '' ? 'selected' : '' ?>>Pilih Area Cabang</option>
-              <option value="Purwakarta" <?= $cabang == 'Purwakarta' ? 'selected' : '' ?>>Purwakarta</option>
-              <option value="Bekasi" <?= $cabang == 'Bekasi' ? 'selected' : '' ?>>Bekasi</option>
-              <option value="Bandung" <?= $cabang == 'Bandung' ? 'selected' : '' ?>>Bandung</option>
-              <option value="Bandung2" <?= $cabang == 'Bandung2' ? 'selected' : '' ?>>Bandung2</option>
+              <option value="Cinunuk" <?= $cabang == 'Cinunuk' ? 'selected' : '' ?>>Cinunuk</option>
               <option value="Cirebon" <?= $cabang == 'Cirebon' ? 'selected' : '' ?>>Cirebon</option>
-              <option value="Garut" <?= $cabang == 'Garut' ? 'selected' : '' ?>>Garut</option>
-              <option value="JakartaBarat" <?= $cabang == 'JakartaBarat' ? 'selected' : '' ?>>Jakarta Barat</option>
-              <option value="JakartaPusat" <?= $cabang == 'JakartaPusat' ? 'selected' : '' ?>>Jakarta Pusat</option>
-              <option value="JakartaSelatan" <?= $cabang == 'JakartaSelatan' ? 'selected' : '' ?>>Jakarta Selatan</option>
-              <option value="JakartaTimur" <?= $cabang == 'JakartaTimur' ? 'selected' : '' ?>>Jakarta Timur</option>
-              <option value="Tangerang" <?= $cabang == 'Tangerang' ? 'selected' : '' ?>>Tangerang</option>
               <option value="Tasikmalaya" <?= $cabang == 'Tasikmalaya' ? 'selected' : '' ?>>Tasikmalaya</option>
+              <option value="Baksul" <?= $cabang == 'Baksul' ? 'selected' : '' ?>>Baksul</option>
               <!-- Tambah area lain di sini -->
             </select>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger me-auto" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Export</button>
-            </div>
-          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger me-auto" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Tambah Data</button>
+          </div>
+        </form>
         </div>
       </div>
     </div>
@@ -229,7 +215,22 @@ if($msg =='updated') {
         </div>
     </section>
 
-
+<script>
+document.getElementById('formCabangModal').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var cabang = document.getElementById('selectCabangModal').value;
+  // Ganti sesuai kebutuhan redirect
+  if (cabang === 'Cinunuk') {
+    window.location.href = '<?= $main_url ?>barang/form-barang.php?cabang=Cinunuk';
+  } else if (cabang === 'Cirebon') {
+    window.location.href = '<?= $main_url ?>barang/form-barang-cirebon.php?cabang=Cirebon';
+  } else if (cabang === 'Tasikmalaya') {
+    window.location.href = '<?= $main_url ?>barang/form-barang-tasik.php?cabang=Tasikmalaya';
+  } else if (cabang === 'Baksul') {
+    window.location.href = '<?= $main_url ?>barang/form-barang-baksul.php?cabang=Baksul';
+  }
+});
+</script>
 
 <?php
 

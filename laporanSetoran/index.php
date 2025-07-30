@@ -21,26 +21,10 @@ $alert = '';
 $cabang = $_GET['cabang'] ?? '';
 
 // Query berdasarkan select
-if ($cabang === 'Purwakarta') {
+if ($cabang === 'Cinunuk') {
     $query = "SELECT * FROM tbl_setoran";
-} elseif($cabang === 'Bekasi') {
-    $query = "SELECT * FROM tbl_setoran_bekasi";
-}elseif($cabang === 'Bandung') {
-    $query = "SELECT * FROM tbl_setoran_bandung";
-}elseif($cabang === 'Bandung2') {
-    $query = "SELECT * FROM tbl_setoran_bandung2";
 }elseif($cabang === 'Cirebon') {
     $query = "SELECT * FROM tbl_setoran_cirebon";
-}elseif($cabang === 'Garut') {
-    $query = "SELECT * FROM tbl_setoran_garut";
-}elseif($cabang === 'JakartaBarat') {
-    $query = "SELECT * FROM tbl_setoran_jakbar";
-}elseif($cabang === 'JakartaSelatan') {
-    $query = "SELECT * FROM tbl_setoran_jaksel";
-}elseif($cabang === 'JakartaPusat') {
-    $query = "SELECT * FROM tbl_setoran_jakpus";
-}elseif($cabang === 'JakartaTimur') {
-    $query = "SELECT * FROM tbl_setoran_jaktim";
 }elseif($cabang === 'Tangerang') {
     $query = "SELECT * FROM tbl_setoran_tangerang";
 }elseif($cabang === 'Tasikmalaya') {
@@ -85,18 +69,10 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
                         data-bs-target="#exampleModal">Ekspor Excel</button></div>
             <select class="form-select" name="cabang" required>
               <option value="" disabled <?= $cabang == '' ? 'selected' : '' ?>>Pilih Area Cabang</option>
-              <option value="Purwakarta" <?= $cabang == 'Purwakarta' ? 'selected' : '' ?>>Purwakarta</option>
-              <option value="Bekasi" <?= $cabang == 'Bekasi' ? 'selected' : '' ?>>Bekasi</option>
-              <option value="Bandung" <?= $cabang == 'Bandung' ? 'selected' : '' ?>>Bandung</option>
-              <option value="Bandung2" <?= $cabang == 'Bandung2' ? 'selected' : '' ?>>Bandung2</option>
+              <option value="Cinunuk" <?= $cabang == 'Cinunuk' ? 'selected' : '' ?>>Cinunuk</option>
               <option value="Cirebon" <?= $cabang == 'Cirebon' ? 'selected' : '' ?>>Cirebon</option>
-              <option value="Garut" <?= $cabang == 'Garut' ? 'selected' : '' ?>>Garut</option>
-              <option value="JakartaBarat" <?= $cabang == 'JakartaBarat' ? 'selected' : '' ?>>Jakarta Barat</option>
-              <option value="JakartaPusat" <?= $cabang == 'JakartaPusat' ? 'selected' : '' ?>>Jakarta Pusat</option>
-              <option value="JakartaSelatan" <?= $cabang == 'JakartaSelatan' ? 'selected' : '' ?>>Jakarta Selatan</option>
-              <option value="JakartaTimur" <?= $cabang == 'JakartaTimur' ? 'selected' : '' ?>>Jakarta Timur</option>
-              <option value="Tangerang" <?= $cabang == 'Tangerang' ? 'selected' : '' ?>>Tangerang</option>
               <option value="Tasikmalaya" <?= $cabang == 'Tasikmalaya' ? 'selected' : '' ?>>Tasikmalaya</option>
+              <option value="Baksul" <?= $cabang == 'Baksul' ? 'selected' : '' ?>>Baksul</option>
               <!-- Tambah area lain di sini -->
             </select>
             <button type="submit" class="btn btn-primary">Tampilkan</button>
@@ -169,7 +145,20 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
             <h5 class="modal-title">Export Excel Presensi Harian</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form method="POST" action="<?= $main_url ?>laporanSetoran/rekap_setoran_excel.php">
+            <?php
+            if ($cabang === 'Cinunuk') {
+                $query = "barang/form-barang.php";
+            }elseif($cabang === 'Cirebon') {
+                $query = "SELECT * FROM tbl_setoran_cirebon";
+            }elseif($cabang === 'Tangerang') {
+                $query = "SELECT * FROM tbl_setoran_tangerang";
+            }elseif($cabang === 'Tasikmalaya') {
+                $query = "SELECT * FROM tbl_setoran_tasik";
+            } else {
+                $query = "";
+            }
+            ?>
+          <form method="POST" action="<?php echo $main_url . $query; ?>">
             <div class="modal-body">
               <div class="mb-3">
                 <label for="">Tanggal Awal</label>
@@ -179,21 +168,12 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
                 <label for="">Tanggal Akhir</label>
                 <input type="date" class="form-control" name="tanggal_sampai">
               </div>
-              <select class="form-select" name="cabang" required>
-              <option value="" disabled <?= $cabang == '' ? 'selected' : '' ?>>Pilih Area Cabang</option>
-              <option value="Purwakarta" <?= $cabang == 'Purwakarta' ? 'selected' : '' ?>>Purwakarta</option>
-              <option value="Bekasi" <?= $cabang == 'Bekasi' ? 'selected' : '' ?>>Bekasi</option>
-              <option value="Bandung" <?= $cabang == 'Bandung' ? 'selected' : '' ?>>Bandung</option>
-              <option value="Bandung2" <?= $cabang == 'Bandung2' ? 'selected' : '' ?>>Bandung2</option>
-              <option value="Cirebon" <?= $cabang == 'Cirebon' ? 'selected' : '' ?>>Cirebon</option>
-              <option value="Garut" <?= $cabang == 'Garut' ? 'selected' : '' ?>>Garut</option>
-              <option value="JakartaBarat" <?= $cabang == 'JakartaBarat' ? 'selected' : '' ?>>Jakarta Barat</option>
-              <option value="JakartaPusat" <?= $cabang == 'JakartaPusat' ? 'selected' : '' ?>>Jakarta Pusat</option>
-              <option value="JakartaSelatan" <?= $cabang == 'JakartaSelatan' ? 'selected' : '' ?>>Jakarta Selatan</option>
-              <option value="JakartaTimur" <?= $cabang == 'JakartaTimur' ? 'selected' : '' ?>>Jakarta Timur</option>
-              <option value="Tangerang" <?= $cabang == 'Tangerang' ? 'selected' : '' ?>>Tangerang</option>
-              <option value="Tasikmalaya" <?= $cabang == 'Tasikmalaya' ? 'selected' : '' ?>>Tasikmalaya</option>
-              <!-- Tambah area lain di sini -->
+              <select class="form-select" name="cab" id="cab" required>
+                <option value="" disabled selected> Pilih Area Cabang </option>
+                <option value="Cinunuk" <?php echo ($cbang === 'Cinunuk' ? 'selected' : ''); ?>>Cinunuk</option>
+                <option value="Cirebon" <?php echo ($cbang === 'Cirebon' ? 'selected' : ''); ?>>Cirebon</option>
+                <option value="Tasikmalaya" <?php echo ($cbang === 'Tasikmalaya' ? 'selected' : ''); ?>>Tasikmalaya</option>
+                <option value="Baksul" <?php echo ($cbang === 'Baksul' ? 'selected' : ''); ?>>Baksul</option>
             </select>
             </div>
             <div class="modal-footer">
@@ -233,6 +213,22 @@ document.getElementById('totalHasil').value = totalHasil.toLocaleString('id-ID')
 }
 
 window.onload = hitungSisaPembayaran;
+
+document.getElementById("cab").addEventListener("change", function() {
+        var selectedCabang = this.value;
+        var form = document.querySelector("form");
+        
+        // Set the form's action dynamically based on the selected branch
+        if (selectedCabang === "Cinunuk") {
+            form.action = "barang/form-barang.php";
+        } else if (selectedCabang === "Cirebon") {
+            form.action = "tbl_setoran_cirebon";
+        } else if (selectedCabang === "Tasikmalaya") {
+            form.action = "tbl_setoran_tasik";
+        } else if (selectedCabang === "Baksul") {
+            form.action = "baksul_form.php"; // Update this to your actual Baksul form
+        }
+    });
 </script>
 
 <?php require "../template/footer.php"; ?>

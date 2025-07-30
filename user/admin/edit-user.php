@@ -46,7 +46,7 @@ if (isset($_POST['koreksi'])) {
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= $main_url ?>user/data-user.php">Users</a></li>
+              <li class="breadcrumb-item"><a href="<?= $main_url ?>user/admin/data-user.php">Users</a></li>
               <li class="breadcrumb-item active">Edit User</li>
             </ol>
           </div><!-- /.col -->
@@ -80,18 +80,10 @@ if (isset($_POST['koreksi'])) {
                             <select name="level" id="level" class="form-control" required>
                                 <option value="">--Level User--</option>
                                 <option value="1" <?= selectUser1($level) ?>>Administrator</option>
-                                <option value="2" <?= selectUser2($level) ?>>Operator Bandung</option>
-                                <option value="3" <?= selectUser3($level) ?>>Operator Purwakarta</option> 
-                                <option value="4" <?= selectUser4($level) ?>>Operator Bandung2</option>
-                                <option value="5" <?= selectUser5($level) ?>>Operator Bekasi</option> 
-                                <option value="6" <?= selectUser6($level) ?>>Operator Cirebon</option>
-                                <option value="7" <?= selectUser7($level) ?>>Operator Garut</option> 
-                                <option value="8" <?= selectUser8($level) ?>>Operator Jakarta Barat</option>
-                                <option value="9" <?= selectUser9($level) ?>>Operator Jakarta Pusat</option> 
-                                <option value="10" <?= selectUser10($level) ?>>Operator Jakarta Selatan</option>
-                                <option value="11" <?= selectUser11($level) ?>>Operator Jakarta Timur</option> 
-                                <option value="12" <?= selectUser12($level) ?>>Operator Tangerang</option>
-                                <option value="13" <?= selectUser13($level) ?>>Operator Tasikmalaya</option> 
+                                <option value="3" <?= selectUser2($level) ?>>Operator Cinunuk</option>
+                                <option value="6" <?= selectUser3($level) ?>>Operator Cirebon</option>
+                                <option value="13" <?= selectUser4($level) ?>>Operator Tasikmalaya</option> 
+                                <option value="12" <?= selectUser5($level) ?>>Operator Baksul</option>
                             </select>
                         </div>
                         <div class="form-group">

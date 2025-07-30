@@ -22,7 +22,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $tanggal_dari = $_POST['tanggal_dari'];
 $tanggal_sampai = $_POST['tanggal_sampai'];
-$result = mysqli_query($koneksi,"SELECT tbl_jual_detail_tasik.*, tbl_jual_head_tasik.customer, tbl_jual_head_tasik.keterangan,  tbl_jual_head_tasik.jml_bayar
+$result = mysqli_query($koneksi,"SELECT tbl_jual_detail_tasik.*, tbl_jual_head_tasik.jml_bayar
         FROM tbl_jual_detail_tasik JOIN tbl_jual_head_tasik ON tbl_jual_detail_tasik.no_jual = tbl_jual_head_tasik.no_jual WHERE tbl_jual_detail_tasik.tgl_jual BETWEEN '$tanggal_dari' AND '$tanggal_sampai' ORDER BY tbl_jual_detail_tasik.tgl_jual DESC");
 
 $spreadsheet = new Spreadsheet();
@@ -38,20 +38,18 @@ $sheet->setCellValue('B5', 'NO NOTA');
 $sheet->setCellValue('C5', 'TANGGAL');
 $sheet->setCellValue('D5', 'KODE BARANG');
 $sheet->setCellValue('E5', 'NAMA BARANG');
-$sheet->setCellValue('F5', 'QTY');
-$sheet->setCellValue('G5', 'CUSTOMER');
-$sheet->setCellValue('H5', 'HARGA');
-$sheet->setCellValue('I5', 'TOTAL');
-$sheet->setCellValue('J5', 'KETERANGAN');
+$sheet->setCellValue('F5', 'QTY');;
+$sheet->setCellValue('G5', 'HARGA');
+$sheet->setCellValue('H5', 'TOTAL');
 
 $sheet->getStyle('A1')->getFont()->setBold(true);
 $sheet->getStyle('A2')->getFont()->setBold(true);
 $sheet->getStyle('A3')->getFont()->setBold(true);
 $sheet->getStyle('C2')->getFont()->setBold(true);
 $sheet->getStyle('C3')->getFont()->setBold(true);
-$sheet->getStyle('A5:J5')->getFont()->setBold(true);
+$sheet->getStyle('A5:H5')->getFont()->setBold(true);
 
-$sheet->getStyle('A5:J10')->applyFromArray([
+$sheet->getStyle('A5:H10')->applyFromArray([
   'borders' => [
     'allborders' =>[
       'borderStyle' => StyleBorder::BORDER_THIN,
@@ -75,10 +73,8 @@ while($data = mysqli_fetch_array($result)){
     $sheet->setCellValue('D'.$row, $data['kode_brg']);
     $sheet->setCellValue('E'.$row, $data['nama_brg']);
     $sheet->setCellValue('F'.$row, $data['qty']);
-    $sheet->setCellValue('G'.$row, $data['customer']);
-    $sheet->setCellValue('H'.$row, $data['harga_jual']);
-    $sheet->setCellValue('I'.$row, $data['jml_bayar']);
-    $sheet->setCellValue('J'.$row, $data['keterangan']);
+    $sheet->setCellValue('G'.$row, $data['harga_jual']);
+    $sheet->setCellValue('H'.$row, $data['jml_bayar']);
 
     $no++;
     $row++;

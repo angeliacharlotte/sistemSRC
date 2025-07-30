@@ -34,13 +34,13 @@ $customers = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT
   (SELECT COUNT(*) FROM tbl_customer_jakpus) +
   (SELECT COUNT(*) FROM tbl_customer_jaksel) +
   (SELECT COUNT(*) FROM tbl_customer_jaktim) +
-  (SELECT COUNT(*) FROM tbl_customer_tangerang) +
+  (SELECT COUNT(*) FROM tbl_customer_baksul) +
   (SELECT COUNT(*) FROM tbl_customer_tasik) AS total"));
 $total = $customers['total'];
 
 $barangs = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT
   (SELECT COUNT(*) FROM tbl_barang) +
-  (SELECT COUNT(*) FROM tbl_barang_bandung) +
+  (SELECT COUNT(*) FROM tbl_barang_baksul) +
   (SELECT COUNT(*) FROM tbl_barang_bandung2) +
   (SELECT COUNT(*) FROM tbl_barang_bekasi) +
   (SELECT COUNT(*) FROM tbl_barang_cirebon) +
@@ -49,7 +49,7 @@ $barangs = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT
   (SELECT COUNT(*) FROM tbl_barang_jakpus) +
   (SELECT COUNT(*) FROM tbl_barang_jaksel) +
   (SELECT COUNT(*) FROM tbl_barang_jaktim) +
-  (SELECT COUNT(*) FROM tbl_barang_tangerang) +
+  (SELECT COUNT(*) FROM tbl_barang_baksul) +
   (SELECT COUNT(*) FROM tbl_barang_tasik) AS total"));
 $total_barang = $barangs['total'];
 ?>

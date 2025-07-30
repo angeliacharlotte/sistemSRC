@@ -56,11 +56,11 @@ if(isset($_POST['simpan'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Area Purwakarta</h1>
+            <h1 class="m-0">Area Cinunuk</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= $main_url ?>barang/barang-purwakarta">Barang</a></li>
+              <li class="breadcrumb-item"><a href="<?= $main_url ?>barang">Barang</a></li>
               <li class="breadcrumb-item active"><?= $msg != '' ? 'Edit Barang' : 'Add Barang' ?></li>
             </ol>
           </div><!-- /.col -->
@@ -108,7 +108,7 @@ if(isset($_POST['simpan'])){
                                     } else { ?>
                                     <option value="">-- Satuan Barang --</option>
                                     <option value="Piece">Piece</option>
-                                    <option value="Karton">Karton</option>
+                                    <option value="Karton">Slop</option>
                                 <?php
                                     }
                                 ?>
@@ -142,7 +142,27 @@ if(isset($_POST['simpan'])){
     </section>
 
 <?php
+require "../config/config.php";
+$id = $_GET['id'] ?? '';
+$cabang = $_GET['cabang'] ?? '';
 
+if ($cabang === 'Cinunuk') {
+    $query = "SELECT * FROM tbl_barang WHERE id_barang='$id'";
+} elseif ($cabang === 'Cirebon') {
+    $query = "SELECT * FROM tbl_barang_cirebon WHERE id_barang='$id'";
+} elseif ($cabang === 'Tasikmalaya') {
+    $query = "SELECT * FROM tbl_barang_tasik WHERE id_barang='$id'";
+} elseif ($cabang === 'Baksul') {
+    $query = "SELECT * FROM tbl_barang_baksul WHERE id_barang='$id'";
+} else {
+    $query = "";
+}
+
+$data = null;
+if ($query != "") {
+    $result = mysqli_query($koneksi, $query);
+    $data = mysqli_fetch_assoc($result);
+}
 
 require "../template/footer.php";
 

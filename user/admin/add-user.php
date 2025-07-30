@@ -79,18 +79,10 @@ if(isset($_POST['simpan'])) {
                             <select name="level" id="level" class="form-control" required>
                                 <option value="">--Level User--</option>
                                 <option value="1">Administrator</option>
-                                <option value="2">Operator Area Bandung</option>
-                                <option value="3">Operator Area Purwakarta</option>
-                                <option value="4">Operator Area Bandung2</option>
-                                <option value="5">Operator Area Bekasi</option>
-                                <option value="6">Operator Area Cirebon</option>
-                                <option value="7">Operator Area Garut</option>
-                                <option value="8">Operator Area Jakarta Barat</option>
-                                <option value="9">Operator Area Jakarta Pusat</option>
-                                <option value="10">Operator Area Jakarta Selatan</option>
-                                <option value="11">Operator Area Jakarta Timur</option>
-                                <option value="12">Operator Area Tangerang</option>
-                                <option value="13">Operator Area Tasik</option>
+                                <option value="2">Operator Area Cinunuk</option>
+                                <option value="3">Operator Area Cirebon</option>
+                                <option value="4">Operator Area Tasik</option>
+                                <option value="5">Operator Area baksul</option>
                             </select>
                         </div>
                         <div class="form-group">

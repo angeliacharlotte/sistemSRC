@@ -31,11 +31,11 @@ if(isset($_POST['simpan'])){
     if($msg != ''){
         if (update_tasik($_POST)){
             echo "
-                <script>document.location.href = 'barang-tasik.php?msg=updated';</script>            
+                <script>document.location.href = 'index.php?msg=updated';</script>            
             ";
         } else {
             echo "
-                <script>document.location.href = 'barang-tasik.php';</script>            
+                <script>document.location.href = 'index.php';</script>            
             ";
         }
     } else {
@@ -60,7 +60,7 @@ if(isset($_POST['simpan'])){
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= $main_url ?>barang/barang-tasik.php">Barang</a></li>
+              <li class="breadcrumb-item"><a href="<?= $main_url ?>barang">Barang</a></li>
               <li class="breadcrumb-item active"><?= $msg != '' ? 'Edit Barang' : 'Add Barang' ?></li>
             </ol>
           </div><!-- /.col -->
@@ -107,10 +107,8 @@ if(isset($_POST['simpan'])){
                                         }
                                     } else { ?>
                                     <option value="">-- Satuan Barang --</option>
-                                    <option value="piece">piece</option>
-                                    <option value="kaleng">kaleng</option>
-                                    <option value="pouch">pouch</option>
-                                    <option value="pouch">botol</option>
+                                    <option value="piece">Piece</option>
+                                    <option value="kaleng">Slop</option>
                                 <?php
                                     }
                                 ?>

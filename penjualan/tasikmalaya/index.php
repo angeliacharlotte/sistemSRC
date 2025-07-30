@@ -206,40 +206,23 @@ $noJual = generateNo_tasik();
                 <div class="row">
                     <div class="col-lg-4 p-2">
                         <div class="form-group row mb-2">
-                        <label for="customer" class="col-sm-3 col-form-label col-form-label-sm">Customer</label>
-                        <div class="col-sm-9">
-                            <select name="customer" id="customer" class="form-control form-control-sm">
-                                <option value="">-- Pilih Customer --</option>
-                                <?php 
-                                        $customers = getData("SELECT *  FROM tbl_customer_tasik");
-                                        foreach($customers as $customer){ ?>
-                                                <option value="<?=$customer['nama'] ?>"><?=$customer['nama'] ?></option>
-                                            <?php
-                                        }
-                                        ?>
-                            </select>
-                        </div>
-                        </div>
-                        <div class="form-group row mb-2">
-                            <label for="ktr" class="col-sm-3 col-form-label col-form-label-sm " >Status</label>
+                            <label for="" class="col-sm-3 col-form-label " >Tipe</label>
                             <div class="col-sm-9">
-                               <select class="form-control form-control-sm" name="status">
-                            <option value="">-- Pilih Pembayaran --</option>
-                            <option <?php if(isset($_POST['status']) && $_POST['status'] == 
-                            'Lunas') {
-                                echo 'selected';
-                            }?> value="Lunas">Lunas</option>
-                            <option <?php if(isset($_POST['status']) && $_POST['status'] == 
-                            'Belum Lunas') {
-                                echo 'selected';
-                            }?> value="Belum Lunas">Kredit</option>
-                        </select>
+                               <select class="form-control form-control-sm" name="tipe">
+                                    <option value="">-- Pilih Pembayaran --</option>
+                                    <option <?php if(isset($_POST['tipe']) && $_POST['tipe'] == 
+                                    'Transfer') {
+                                        echo 'selected';
+                                    }?> value="Transfer">Transfer</option>
+                                    <option <?php if(isset($_POST['tipe']) && $_POST['tipe'] == 
+                                    'Cash') {
+                                        echo 'selected';
+                                    }?> value="Cash">Cash</option>
+                                </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 p-2">
                         <div class="form-group row mb-2">
-                            <label for="bayar" class="col-sm-3 col-form-label">Bayar</label>
+                            <label for="bayar" class="col-sm-3 col-form-label">Nominal</label>
                             <div class="col-sm-9">
                                 <input type="number" name="bayar" class="form-control form-control-sm text-right" id="bayar">
                             </div>

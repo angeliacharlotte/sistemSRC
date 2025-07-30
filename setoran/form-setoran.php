@@ -2,9 +2,10 @@
 
 session_start();
 
-if(!isset($_SESSION["ssLoginPOS"])) {
-  header("location: ../auth/login.php");
-  exit();
+if (!isset($_SESSION["ssLoginPOS"])) {
+  header("Location: ../../auth/login.php?pesan=belum_login");
+} elseif ($_SESSION["level"] != '3') {
+  header("Location: ../../error-page.php?pesan=tolak_akses");
 }
 
 require "../config/config.php";
