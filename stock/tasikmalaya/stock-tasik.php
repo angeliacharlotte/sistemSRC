@@ -34,10 +34,9 @@ if (empty($_GET['tanggal_dari'])) {
         b.harga_jual,
         COALESCE(p.stock_masuk, 0) AS stock_masuk,
         COALESCE(j.stock_keluar, 0) AS stock_keluar,
-        b.stock,
-        j.customer,  
+        b.stock,  
         bh.suplier,
-        COALESCE(c.deskripsi, 'Area Tasikmalaya') AS area
+        COALESCE('Area Tasikmalaya') AS area
     FROM (
         SELECT DISTINCT DATE(tgl_beli) AS tanggal, nama_brg FROM tbl_beli_detail_tasik WHERE DATE(tgl_beli) BETWEEN '$tanggal_awal_bulan' AND '$tanggal_akhir_bulan'
         UNION
@@ -54,14 +53,13 @@ if (empty($_GET['tanggal_dari'])) {
     ) p ON p.tanggal = t.tanggal AND p.nama_brg = t.nama_brg
     LEFT JOIN tbl_beli_head_tasik bh ON bh.no_beli = p.no_beli
     LEFT JOIN (
-        SELECT DATE(jh.tgl_jual) AS tanggal, jd.nama_brg, SUM(jd.qty) AS stock_keluar, jh.customer
+        SELECT DATE(jh.tgl_jual) AS tanggal, jd.nama_brg, SUM(jd.qty) AS stock_keluar
         FROM tbl_jual_head_tasik jh
         JOIN tbl_jual_detail_tasik jd ON jh.no_jual = jd.no_jual
         WHERE DATE(jh.tgl_jual) BETWEEN '$tanggal_awal_bulan' AND '$tanggal_akhir_bulan'
-        GROUP BY DATE(jh.tgl_jual), jd.nama_brg, jh.customer
+        GROUP BY DATE(jh.tgl_jual), jd.nama_brg
     ) j ON j.tanggal = t.tanggal AND j.nama_brg = t.nama_brg
     LEFT JOIN tbl_barang_tasik b ON b.nama_barang = t.nama_brg
-    LEFT JOIN tbl_customer_tasik c ON j.customer = c.nama
     ORDER BY t.tanggal ASC, t.nama_brg ASC
 ");
 
@@ -74,10 +72,9 @@ if (empty($_GET['tanggal_dari'])) {
         b.harga_jual,
         COALESCE(p.stock_masuk, 0) AS stock_masuk,
         COALESCE(j.stock_keluar, 0) AS stock_keluar,
-        b.stock,
-        j.customer, 
+        b.stock, 
         bh.suplier,
-        COALESCE(c.deskripsi, 'Area Tasikmalaya') AS area
+        COALESCE('Area Tasikmalaya') AS area
     FROM (
         SELECT DISTINCT DATE(tgl_beli) AS tanggal, nama_brg 
         FROM tbl_beli_detail_tasik 
@@ -96,14 +93,13 @@ if (empty($_GET['tanggal_dari'])) {
     ) p ON p.tanggal = t.tanggal AND p.nama_brg = t.nama_brg
     LEFT JOIN tbl_beli_head_tasik bh ON bh.no_beli = p.no_beli
     LEFT JOIN (
-        SELECT DATE(jh.tgl_jual) AS tanggal, jd.nama_brg, SUM(jd.qty) AS stock_keluar, jh.customer
+        SELECT DATE(jh.tgl_jual) AS tanggal, jd.nama_brg, SUM(jd.qty) AS stock_keluar
         FROM tbl_jual_head_tasik jh
         JOIN tbl_jual_detail_tasik jd ON jh.no_jual = jd.no_jual
         WHERE DATE(jh.tgl_jual) BETWEEN '$tanggal_dari' AND '$tanggal_hari_ini'
-        GROUP BY DATE(jh.tgl_jual), jd.nama_brg, jh.customer
+        GROUP BY DATE(jh.tgl_jual), jd.nama_brg
     ) j ON j.tanggal = t.tanggal AND j.nama_brg = t.nama_brg
     LEFT JOIN tbl_barang_tasik b ON b.nama_barang = t.nama_brg
-    LEFT JOIN tbl_customer_tasik c ON j.customer = c.nama
     ORDER BY t.tanggal ASC, t.nama_brg ASC
 ");
 
@@ -116,10 +112,9 @@ if (empty($_GET['tanggal_dari'])) {
         b.harga_jual,
         COALESCE(p.stock_masuk, 0) AS stock_masuk,
         COALESCE(j.stock_keluar, 0) AS stock_keluar,
-        b.stock,
-        j.customer, 
+        b.stock, 
         bh.suplier,
-        COALESCE(c.deskripsi, 'Area Tasikmalaya') AS area
+        COALESCE('Area Tasikmalaya') AS area
     FROM (
         SELECT DISTINCT DATE(tgl_beli) AS tanggal, nama_brg 
         FROM tbl_beli_detail_tasik 
@@ -138,14 +133,13 @@ if (empty($_GET['tanggal_dari'])) {
     ) p ON p.tanggal = t.tanggal AND p.nama_brg = t.nama_brg
     LEFT JOIN tbl_beli_head_tasik bh ON bh.no_beli = p.no_beli
     LEFT JOIN (
-        SELECT DATE(jh.tgl_jual) AS tanggal, jd.nama_brg, SUM(jd.qty) AS stock_keluar, jh.customer
+        SELECT DATE(jh.tgl_jual) AS tanggal, jd.nama_brg, SUM(jd.qty) AS stock_keluar
         FROM tbl_jual_head_tasik jh
         JOIN tbl_jual_detail_tasik jd ON jh.no_jual = jd.no_jual
         WHERE DATE(jh.tgl_jual) BETWEEN '$tanggal_dari' AND '$tanggal_sampai'
-        GROUP BY DATE(jh.tgl_jual), jd.nama_brg, jh.customer
+        GROUP BY DATE(jh.tgl_jual), jd.nama_brg
     ) j ON j.tanggal = t.tanggal AND j.nama_brg = t.nama_brg
     LEFT JOIN tbl_barang_tasik b ON b.nama_barang = t.nama_brg
-    LEFT JOIN tbl_customer_tasik c ON j.customer = c.nama
     ORDER BY t.tanggal ASC, t.nama_brg ASC
 ");
 }

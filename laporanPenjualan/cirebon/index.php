@@ -99,7 +99,7 @@ if (empty($_GET['tanggal_dari'])) {
                         <span>Laporan Penjualan Tanggal : <?= date('d F Y', strtotime($_GET['tanggal_dari'])) . ' sampai ' . date('d F Y', strtotime($_GET['tanggal_sampai'])) ?></span>
                         <?php endif; ?>
 
-                    <table class="table table-hover text-nowrap mt-2">
+                    <table class="table table-hover text-nowrap mt-2 text-center">
                         <thead>
                             <tr>
                                 <th>No Nota</th>
@@ -110,6 +110,11 @@ if (empty($_GET['tanggal_dari'])) {
                                 <th>Harga</th>
                                 <th>Total</th>
                             </tr>
+                            <?php if(mysqli_num_rows($result) === 0) {?>
+                            <tr>
+                                <td colspan="7">Silahkan pilih rentang tanggal</td>
+                            </tr>
+                            <?php } else { ?>
                         </thead>
                         <tbody>
                             <?php
@@ -130,8 +135,8 @@ if (empty($_GET['tanggal_dari'])) {
                             endwhile;
                             ?>
                         </tbody>
+                        <?php } ?>
                     </table>
-
                 </div>
             </div>
         </div>

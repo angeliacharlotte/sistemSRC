@@ -287,9 +287,24 @@ if (empty($_GET['tanggal_dari'])) {
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="7" style="text-align: right;"><strong>Total Harga Stock</strong></td>
+                                <td colspan="7" style="text-align: right;"><strong>Total Harga Stock</strong></td>                                
                                 <td><strong><?= number_format($total_harga_stock, 0, ',', '.') ?></strong></td>
                             </tr>
+                            <!-- <tr>
+                                <td colspan="7" style="text-align: right;"><strong>Total Harga Stock</strong></td>
+                                <td>
+                                  <strong>
+                                  <?php
+                                    // Tampilkan detail per barang: harga jual x jumlah stock
+                                    foreach ($stok_per_barang as $nama => $barang) {
+                                      echo $nama . ': ' . number_format($barang['harga_jual'], 0, ',', '.') . ' x ' . number_format($barang['sisa_stock'], 0, ',', '.') . ' = ' . number_format($barang['harga_jual'] * $barang['sisa_stock'], 0, ',', '.') . '<br>';
+                                    }
+                                    echo '<hr>';
+                                    echo 'Total: ' . number_format($total_harga_stock, 0, ',', '.');
+                                  ?>
+                                  </strong>
+                                </td>
+                            </tr> -->
                         </tfoot>
                         <?php } ?>
                     </table>

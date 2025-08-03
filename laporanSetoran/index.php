@@ -25,8 +25,8 @@ if ($cabang === 'Cinunuk') {
     $query = "SELECT * FROM tbl_setoran";
 }elseif($cabang === 'Cirebon') {
     $query = "SELECT * FROM tbl_setoran_cirebon";
-}elseif($cabang === 'Tangerang') {
-    $query = "SELECT * FROM tbl_setoran_tangerang";
+}elseif($cabang === 'Baksul') {
+    $query = "SELECT * FROM tbl_setoran_baksul";
 }elseif($cabang === 'Tasikmalaya') {
     $query = "SELECT * FROM tbl_setoran_tasik";
 } else {
@@ -41,7 +41,7 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Laporan Area</h1>
+          <h1 class="m-0">Rekap Setoran</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -81,20 +81,14 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
           <?php if ($cabang !== '') : ?>
             <span>Laporan Setoran Area: <strong><?= htmlspecialchars($cabang) ?></strong></span>
 
-            <table class="table table-hover text-nowrap mt-2" id="tabel-piutang">
+            <table class="table table-hover text-nowrap mt-2 text-center" id="tabel-piutang">
               <thead>
                 <tr>
                   <th>Kode Setoran</th>
                   <th>Tanggal</th>
-                  <th>Transaksi</th>
-                  <th>Pengirim</th>
-                  <th>Penerima</th>
-                  <th>Periode</th>
-                  <th>Keterangan</th>
-                  <th>Pemasukan</th>
-                  <th>Pengeluaran</th>
-                  <th>Saldo</th>
-                  <th>Bukti</th>
+                  <th>Penjualan</th>
+                  <th>Admin QRIS</th>
+                  <th>Total</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -106,18 +100,17 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
                   <tr>
                     <td><?= $str['id_setoran']?></td>
                     <td><?= date('d F Y', strtotime($str['tgl_setoran'])) ?></td>
-                    <td><?= $str['transaksi'] ?></td>
-                    <td><?= $str['pengirim'] ?></td>
-                    <td><?= $str['penerima'] ?></td>
-                    <td><?= $str['periode'] ?></td>
-                    <td class="keterangan"><?= $str['keterangan'] ?></td>
-                    <td class="text-center harga"><?= number_format($str['pemasukan'],0,',','.') ?></td>
-                    <td class="text-center dibayar"><?= number_format($str['pengeluaran'],0,',','.') ?></td>
-                    <td class="text-center harga"><?= number_format($str['pemasukan'],0,',','.') ?></td>
-                    <td><img style="width: 75px; height: 75px;" src="../asset/image/<?= $str['bukti'] ?>" alt=""></td>
+                    <td class="text-center"><?= number_format($str['penjualan'],0,',','.') ?></td>
+                    <td class="text-center"><?= number_format($str['qris'],0,',','.') ?></td>
+                    <td class="text-center">
+                      <?php
+                        $total = $str['penjualan'] - $str['qris'];
+                        echo number_format($total,0,',','.');
+                      ?>
+                    </td>
                     <td>
                       <a href="edit-piutang.php?id=<?= $str['id_setoran'] ?>" class="btn btn-sm btn-warning" title="Edit"><i class="fas fa-user-edit"></i></a>
-                      <a target="_blank" href="<?= $main_url ?>asset/image/<?= $str['bukti']  ?>" download class="btn btn-sm bg-primary ti ti-download"><i class="fas fa-file-download"></i></a>
+                      
                     </td>
                   </tr>
                 <?php endwhile; else: ?>
@@ -150,8 +143,8 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
                 $query = "barang/form-barang.php";
             }elseif($cabang === 'Cirebon') {
                 $query = "SELECT * FROM tbl_setoran_cirebon";
-            }elseif($cabang === 'Tangerang') {
-                $query = "SELECT * FROM tbl_setoran_tangerang";
+            }elseif($cabang === 'Baksul') {
+                $query = "SELECT * FROM tbl_setoran_baksul";
             }elseif($cabang === 'Tasikmalaya') {
                 $query = "SELECT * FROM tbl_setoran_tasik";
             } else {
@@ -189,27 +182,19 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
 </div>
 
 <script>
+
 function hitungSisaPembayaran() {
   const rows = document.querySelectorAll('#tabel-piutang tbody tr');
-let totalSaldo = 0;
-let totalPengeluaran = 0;
+  let totalSaldo = 0;
 
-rows.forEach(row => {
-  const saldoText = row.querySelector('td:nth-child(10')?.textContent.trim().replace(/\./g, '') || '0';
-  const pengeluaranText = row.querySelector('td:nth-child(9)')?.textContent.trim().replace(/\./g, '') || '0';
+  rows.forEach(row => {
+    // Total di kolom ke-5
+    const totalText = row.querySelector('td:nth-child(5)')?.textContent.trim().replace(/\./g, '') || '0';
+    const total = parseInt(totalText) || 0;
+    totalSaldo += total;
+  });
 
-  const saldo = parseInt(saldoText) || 0;
-  const pengeluaran = parseInt(pengeluaranText) || 0;
-
-  totalSaldo += saldo;
-  totalPengeluaran += pengeluaran;
-});
-
-const totalHasil = totalSaldo - totalPengeluaran;
-
-// Tampilkan hasil ke input
-document.getElementById('totalHasil').value = totalHasil.toLocaleString('id-ID');
-
+  document.getElementById('totalHasil').value = totalSaldo.toLocaleString('id-ID');
 }
 
 window.onload = hitungSisaPembayaran;

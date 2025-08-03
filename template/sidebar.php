@@ -7,7 +7,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" style="min-height: 100vh;">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -291,38 +291,40 @@
     <!-- Setoran -->
     <?php if(userLogin()['level'] == 1): ?>
     <li class="nav-item">
-      <a href="<?= $main_url ?>laporanSetoran/" class="nav-link" <?= menuHome() ?>>
+      <a href="<?= $main_url ?>pengeluaran/" class="nav-link" <?= menuHome() ?>>
         <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
+        <p>Pengeluaran</p>
       </a>      
     </li>
-    <?php elseif(userLogin()['level'] == 2) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 3) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_cirebon.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 4) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_tasik.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
-    </li>
-    <?php elseif(userLogin()['level'] == 5) :?>
-      <li class="nav-item">
-      <a href="<?= $main_url ?>setoran/form-setoran_baksul.php" class="nav-link" <?= menuHome() ?>>
-        <i class="nav-icon fas fa-money-bill text-sm"></i>
-        <p>Data Setoran</p>
-      </a>      
+    <?php endif; ?>
+    <!-- Pendapatan & Pengeluaran  -->
+    <?php if(userLogin()['level'] == 1): ?>
+    <li class="nav-item has-treeview <?= menuMaster()?>">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-chart-pie text-sm"></i>
+        <p>
+          Setoran
+          <i class="fas fa-angle-left right"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview ml-3">
+        <li class="nav-item <?= menuMaster()?>">
+          <a href="<?= $main_url ?>rekapMutasi/" class="nav-link">
+          <i class=" nav-icon fas fa-map-pin text-sm"></i>
+          <p>
+            Laporan Setoran           
+          </p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview <?= menuMaster()?>">
+          <a href="<?= $main_url ?>laporanSetoran/" class="nav-link">
+          <i class=" nav-icon fas fa-map-pin text-sm"></i>
+          <p>
+            Rekap Pendapatan             
+          </p>
+          </a>
+        </li>
+      </ul>
     </li>
     <?php endif; ?>
     <!-- Laporan Pembelian -->
@@ -428,7 +430,7 @@
       <ul class="nav nav-treeview ml-3">
         <!-- Cinunuk -->
         <li class="nav-item <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanPenjualan/purwakarta" class="nav-link">
+          <a href="<?= $main_url ?>laporanPenjualan/cinunuk" class="nav-link">
           <i class=" nav-icon fas fa-map-pin text-sm"></i>
           <p>
             Cinunuk            
@@ -498,56 +500,6 @@
       </a>
     </li>
     <?php endif; ?>
-<!-- Laporan Piutang -->
-    <?php if(userLogin()['level'] == 1): ?>
-    <li class="nav-item has-treeview <?= menuMaster()?>">
-      <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-chart-line text-sm"></i>
-        <p>
-          Laporan Piutang Toko
-        </p>
-        <i class="fas fa-angle-left right"></i>
-      </a>
-      <ul class="nav nav-treeview ml-3">
-        <!-- Cinunuk -->
-        <li class="nav-item <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanPiutang/purwakarta" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Cinunuk            
-          </p>
-          </a>
-        </li>
-        <!-- Cirebon -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanPiutang/cirebon" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Cirebon           
-          </p>
-          </a>
-        </li>
-        <!-- Tasikmalaya -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanPiutang/tasikmalaya" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Tasikmalaya            
-          </p>
-          </a>
-        </li>
-        <!-- Baksul -->
-        <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>laporanPiutang/baksul" class="nav-link">
-          <i class=" nav-icon fas fa-map-pin text-sm"></i>
-          <p>
-            Baksul            
-          </p>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <?php endif; ?>
 
     <?php if(userLogin()['level'] == 1): ?>
     <li class="nav-item has-treeview <?= menuMaster()?>">
@@ -612,7 +564,7 @@
       <ul class="nav nav-treeview ml-3">
         <!-- Cinunuk -->
         <li class="nav-item <?= menuMaster()?>">
-          <a href="<?= $main_url ?>stock/cinunuk/stock-purwakarta.php" class="nav-link">
+          <a href="<?= $main_url ?>stock/cinunuk/stock-cinunuk.php" class="nav-link">
           <i class=" nav-icon fas fa-map-pin text-sm"></i>
           <p>
             Cinunuk            
@@ -639,7 +591,7 @@
         </li>
         <!-- Baksul -->
         <li class="nav-item has-treeview <?= menuMaster()?>">
-          <a href="<?= $main_url ?>stock/baksul/stock-tangerang.php" class="nav-link">
+          <a href="<?= $main_url ?>stock/baksul/stock-baksul.php" class="nav-link">
           <i class=" nav-icon fas fa-map-pin text-sm"></i>
           <p>
             Baksul            

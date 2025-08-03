@@ -29,9 +29,8 @@ $tanggal_dari = $_POST['tanggal_dari'];
         COALESCE(p.stock_masuk, 0) AS stock_masuk,
         COALESCE(j.stock_keluar, 0) AS stock_keluar,
         b.stock,
-        j.customer, 
         bh.suplier,
-        COALESCE(c.deskripsi, 'Area Cirebon') AS area
+        COALESCE('Area Cirebon') AS area
     FROM (
         SELECT DISTINCT DATE(tgl_beli) AS tanggal, nama_brg 
         FROM tbl_beli_detail_cirebon 
@@ -50,14 +49,13 @@ $tanggal_dari = $_POST['tanggal_dari'];
     ) p ON p.tanggal = t.tanggal AND p.nama_brg = t.nama_brg
     LEFT JOIN tbl_beli_head_cirebon bh ON bh.no_beli = p.no_beli
     LEFT JOIN (
-        SELECT DATE(jh.tgl_jual) AS tanggal, jd.nama_brg, SUM(jd.qty) AS stock_keluar, jh.customer
+        SELECT DATE(jh.tgl_jual) AS tanggal, jd.nama_brg, SUM(jd.qty) AS stock_keluar
         FROM tbl_jual_head_cirebon jh
         JOIN tbl_jual_detail_cirebon jd ON jh.no_jual = jd.no_jual
         WHERE DATE(jh.tgl_jual) BETWEEN '$tanggal_dari' AND '$tanggal_sampai'
-        GROUP BY DATE(jh.tgl_jual), jd.nama_brg, jh.customer
+        GROUP BY DATE(jh.tgl_jual), jd.nama_brg
     ) j ON j.tanggal = t.tanggal AND j.nama_brg = t.nama_brg
     LEFT JOIN tbl_barang_cirebon b ON b.nama_barang = t.nama_brg
-    LEFT JOIN tbl_customer_cirebon c ON j.customer = c.nama
     ORDER BY t.tanggal ASC, t.nama_brg ASC
 ");
 

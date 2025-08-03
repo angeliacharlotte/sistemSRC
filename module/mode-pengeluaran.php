@@ -3,52 +3,52 @@
 function generateId(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_pengeluaran) as maxid FROM tbl_pengeluaran");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
     $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "STCN-" . sprintf("%03s", $noUrut);
+    $maxid = "PCN-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdcirebon(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_cirebon");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_pengeluaran) as maxid FROM tbl_pengeluaran_cirebon");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
     $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "STCB-" . sprintf("%03s", $noUrut);
+    $maxid = "PCB-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdbaksul(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_baksul");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_pengeluaran) as maxid FROM tbl_pengeluaran_baksul");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
     $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "STBS-" . sprintf("%03s", $noUrut);
+    $maxid = "PBS-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
 function generateIdtasik(){
     global $koneksi;
 
-    $queryId = mysqli_query($koneksi, "SELECT max(id_setoran) as maxid FROM tbl_setoran_tasik");
+    $queryId = mysqli_query($koneksi, "SELECT max(id_pengeluaran) as maxid FROM tbl_pengeluaran_tasik");
     $data = mysqli_fetch_array($queryId);
     $maxid = $data['maxid'];
 
     $noUrut = (int) substr($maxid, 5, 4);
     $noUrut++;
-    $maxid = "STTS-" . sprintf("%03s", $noUrut);
+    $maxid = "PTS-" . sprintf("%03s", $noUrut);
 
     return $maxid;
 }
@@ -57,50 +57,21 @@ function generateIdtasik(){
 function insert($data) {
     global $koneksi;
 
-   $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+   $id_pengeluaran = mysqli_real_escape_string($koneksi, $data['id_pengeluaran']);
     $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
-    $penjualan = mysqli_real_escape_string($koneksi, $data['penjualan']);
-    $qris = mysqli_real_escape_string($koneksi, $data['qris']);
-    
-
-// Upload gambar
-// if ($gambar != null) {
-//     $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
-// } else {
-//     $gambar = 'transaction.png';
-// }
-
-// Gambar tidak sesuai validasi
-// if ($gambar == '') {
-//     return false;
-// }
-
-// Upload file (PDF, DOCX, XLSX)
-// $file_ktr = '';
-// if ($_FILES['ktr']['name'] != '') {
-//     $allowed_extensions = ['pdf', 'docx', 'doc', 'xlsx', 'xls'];
-//     $file_ext = strtolower(pathinfo($_FILES['ktr']['name'], PATHINFO_EXTENSION));
-//     $file_tmp = $_FILES['ktr']['tmp_name'];
-
-//     if (in_array($file_ext, $allowed_extensions)) {
-//         $new_name = 'ktr_' . $id_setoran . '.' . $file_ext;
-//         $upload_path = '../asset/keteranganPengeluaran/' . $new_name;
-
-//         if (move_uploaded_file($file_tmp, $upload_path)) {
-//             $file_ktr = $new_name;
-//         } else {
-//             return false; // gagal upload
-//         }
-//     } else {
-//         return false; // ekstensi tidak diizinkan
-//     }
-// } else {
-//     $file_ktr = null;
-// }
+    $gaji = mysqli_real_escape_string($koneksi, $data['gaji']);
+    $iqos = mysqli_real_escape_string($koneksi, $data['iqos']);
+    $listrik = mysqli_real_escape_string($koneksi, $data['listrik']);
+    $sewa = mysqli_real_escape_string($koneksi, $data['sewa']);
+    $internet = mysqli_real_escape_string($koneksi, $data['internet']);
+    $saldo_awal = mysqli_real_escape_string($koneksi, $data['saldo_awal']);
+    $invoice = mysqli_real_escape_string($koneksi, $data['invoice']);
+    $lainnya = mysqli_real_escape_string($koneksi, $data['lainnya']);
 
 // Simpan ke database
-$sqlBrg = "INSERT INTO tbl_setoran (id_setoran, tgl_setoran, penjualan, qris)
-    VALUES ('$id_setoran', '$tanggal', '$penjualan', '$qris')";
+
+$sqlBrg = "INSERT INTO tbl_pengeluaran (id_pengeluaran, tgl_pengeluaran, gaji, iqos, listrik, sewa, internet, saldo_awal, invoice, lainnya)
+    VALUES ('$id_pengeluaran', '$tanggal', '$gaji', '$iqos', '$listrik', '$sewa', '$internet', '$saldo_awal', '$invoice','$lainnya')";
 
 mysqli_query($koneksi, $sqlBrg);
 
@@ -108,27 +79,22 @@ return mysqli_affected_rows($koneksi);
 
 }
 function insert_tasik($data) {
-      global $koneksi;
-    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    global $koneksi;
+
+    $id_pengeluaran = mysqli_real_escape_string($koneksi, $data['id_pengeluaran']);
     $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
-    $penjualan = mysqli_real_escape_string($koneksi, $data['penjualan']);
-    $qris = mysqli_real_escape_string($koneksi, $data['qris']);
-
-// Upload gambar
-// if ($gambar != null) {
-//     $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
-// } else {
-//     $gambar = 'transaction.png';
-// }
-
-// Gambar tidak sesuai validasi
-// if ($gambar == '') {
-//     return false;
-// }
+    $gaji = mysqli_real_escape_string($koneksi, $data['gaji']);
+    $iqos = mysqli_real_escape_string($koneksi, $data['iqos']);
+    $listrik = mysqli_real_escape_string($koneksi, $data['listrik']);
+    $sewa = mysqli_real_escape_string($koneksi, $data['sewa']);
+    $internet = mysqli_real_escape_string($koneksi, $data['internet']);
+    $saldo_awal = mysqli_real_escape_string($koneksi, $data['saldo_awal']);
+    $invoice = mysqli_real_escape_string($koneksi, $data['invoice']);
+    $lainnya = mysqli_real_escape_string($koneksi, $data['lainnya']);
 
 // Simpan ke database
-$sqlBrg = "INSERT INTO tbl_setoran_tasik (id_setoran, tgl_setoran, penjualan, qris)
-    VALUES ('$id_setoran', '$tanggal', '$penjualan', '$qris')";
+$sqlBrg = "INSERT INTO tbl_pengeluaran_tasik (id_pengeluaran, tgl_pengeluaran, gaji, iqos, listrik, sewa, internet, saldo_awal, invoice, lainnya)
+    VALUES ('$id_pengeluaran', '$tanggal', '$gaji', '$iqos', '$listrik', '$sewa', '$internet', '$saldo_awal', '$invoice', '$lainnya')";
 
 mysqli_query($koneksi, $sqlBrg);
 
@@ -136,29 +102,22 @@ return mysqli_affected_rows($koneksi);
 }
 
 function insert_cirebon($data) {
-      global $koneksi;
-    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    global $koneksi;
+
+    $id_pengeluaran = mysqli_real_escape_string($koneksi, $data['id_pengeluaran']);
     $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
-    $penjualan = mysqli_real_escape_string($koneksi, $data['penjualan']);
-    $qris = mysqli_real_escape_string($koneksi, $data['qris']);
-    $insentive = mysqli_real_escape_string($koneksi, $data['insentive']);
-    $penggantian_promo = mysqli_real_escape_string($koneksi, $data['penggantian_promo']);
-
-// Upload gambar
-// if ($gambar != null) {
-//     $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
-// } else {
-//     $gambar = 'transaction.png';
-// }
-
-// // Gambar tidak sesuai validasi
-// if ($gambar == '') {
-//     return false;
-// }
+    $gaji = mysqli_real_escape_string($koneksi, $data['gaji']);
+    $iqos = mysqli_real_escape_string($koneksi, $data['iqos']);
+    $listrik = mysqli_real_escape_string($koneksi, $data['listrik']);
+    $sewa = mysqli_real_escape_string($koneksi, $data['sewa']);
+    $internet = mysqli_real_escape_string($koneksi, $data['internet']);
+    $saldo_awal = mysqli_real_escape_string($koneksi, $data['saldo_awal']);
+    $invoice = mysqli_real_escape_string($koneksi, $data['invoice']);
+    $lainnya = mysqli_real_escape_string($koneksi, $data['lainnya']);
 
 // Simpan ke database
-$sqlBrg = "INSERT INTO tbl_setoran_cirebon (id_setoran, tgl_setoran, penjualan, qris, insentive, penggantian_promo)
-    VALUES ('$id_setoran', '$tanggal', '$penjualan', '$qris', '$insentive', '$penggantian_promo')";
+$sqlBrg = "INSERT INTO tbl_pengeluaran_cirebon (id_pengeluaran, tgl_pengeluaran, gaji, iqos, listrik, sewa, internet, saldo_awal, invoice, lainnya)
+    VALUES ('$id_pengeluaran', '$tanggal', '$gaji', '$iqos', '$listrik', '$sewa', '$internet', '$saldo_awal', '$invoice', '$lainnya')";
 
 mysqli_query($koneksi, $sqlBrg);
 
@@ -166,29 +125,22 @@ return mysqli_affected_rows($koneksi);
 }
 
 function insert_baksul($data) {
-      global $koneksi;
-    $id_setoran = mysqli_real_escape_string($koneksi, $data['id_setoran']);
+    global $koneksi;
+
+    $id_pengeluaran = mysqli_real_escape_string($koneksi, $data['id_pengeluaran']);
     $tanggal = mysqli_real_escape_string($koneksi, $data['tanggal']);
-    $penjualan = mysqli_real_escape_string($koneksi, $data['penjualan']);
-    $qris = mysqli_real_escape_string($koneksi, $data['qris']);
-    $insentive = mysqli_real_escape_string($koneksi, $data['insentive']);
-    $penggantian_promo = mysqli_real_escape_string($koneksi, $data['penggantian_promo']);
-
-// Upload gambar
-// if ($gambar != null) {
-//     $gambar = uploadimg(null, $id_setoran); // pastikan fungsi uploadimg ada
-// } else {
-//     $gambar = 'transaction.png';
-// }
-
-// Gambar tidak sesuai validasi
-// if ($gambar == '') {
-//     return false;'
-// }
+    $gaji = mysqli_real_escape_string($koneksi, $data['gaji']);
+    $iqos = mysqli_real_escape_string($koneksi, $data['iqos']);
+    $listrik = mysqli_real_escape_string($koneksi, $data['listrik']);
+    $sewa = mysqli_real_escape_string($koneksi, $data['sewa']);
+    $internet = mysqli_real_escape_string($koneksi, $data['internet']);
+    $saldo_awal = mysqli_real_escape_string($koneksi, $data['saldo_awal']);
+    $invoice = mysqli_real_escape_string($koneksi, $data['invoice']);
+    $lainnya = mysqli_real_escape_string($koneksi, $data['lainnya']);
 
 // Simpan ke database
-$sqlBrg = "INSERT INTO tbl_setoran_baksul (id_setoran, tgl_setoran, penjualan, qris, insentive, penggantian_promo)
-    VALUES ('$id_setoran', '$tanggal', '$penjualan', '$qris', '$insentive', '$penggantian_promo')";
+$sqlBrg = "INSERT INTO tbl_pengeluaran_baksul (id_pengeluaran, tgl_pengeluaran, gaji, iqos, listrik, sewa, internet, saldo_awal, invoice, lainnya)
+    VALUES ('$id_pengeluaran', '$tanggal', '$gaji', '$iqos', '$listrik', '$sewa', '$internet', '$saldo_awal', '$invoice', '$lainnya')";
 
 mysqli_query($koneksi, $sqlBrg);
 

@@ -27,19 +27,27 @@ $alert = '';
 
 if(empty($_GET['tanggal_dari'])) {  
   $tanggal_hari_ini = date('Y-m-d');
-  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail.*, tbl_jual_head.jml_bayar, tbl_jual_head.total
-        FROM tbl_jual_detail JOIN tbl_jual_head ON tbl_jual_detail.no_jual = tbl_jual_head.no_jual WHERE tbl_jual_detail.tgl_jual = '$tanggal_hari_ini' ORDER BY tbl_jual_detail.tgl_jual DESC");
+  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail.*, tbl_jual_head.jml_bayar, tbl_jual_head.total, tbl_barang.harga_jual
+        FROM tbl_jual_detail 
+        JOIN tbl_jual_head ON tbl_jual_detail.no_jual = tbl_jual_head.no_jual 
+        JOIN tbl_barang ON tbl_jual_detail.kode_brg = tbl_barang.id_barang
+        WHERE tbl_jual_detail.tgl_jual = '$tanggal_hari_ini' ORDER BY tbl_jual_detail.tgl_jual DESC");
 }else if(empty($_GET['tanggal_sampai'])){
   $tanggal_dari = $_GET['tanggal_dari'];
   $tanggal_hari_ini = date('Y-m-d');
-//   $tanggal_sampai = $_GET['tanggal_sampai'];
-  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail.*, tbl_jual_head.jml_bayar, tbl_jual_head.total
-        FROM tbl_jual_detail JOIN tbl_jual_head ON tbl_jual_detail.no_jual = tbl_jual_head.no_jual WHERE tbl_jual_detail.tgl_jual BETWEEN '$tanggal_dari' AND '$tanggal_hari_ini' ORDER BY tbl_jual_detail.tgl_jual DESC");
+  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail.*, tbl_jual_head.jml_bayar, tbl_jual_head.total, tbl_barang.harga_jual
+        FROM tbl_jual_detail 
+        JOIN tbl_jual_head ON tbl_jual_detail.no_jual = tbl_jual_head.no_jual 
+        JOIN tbl_barang ON tbl_jual_detail.kode_brg = tbl_barang.id_barang
+        WHERE tbl_jual_detail.tgl_jual BETWEEN '$tanggal_dari' AND '$tanggal_hari_ini' ORDER BY tbl_jual_detail.tgl_jual DESC");
 }else{
     $tanggal_dari = $_GET['tanggal_dari'];
   $tanggal_sampai = $_GET['tanggal_sampai'];
-  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail.*, tbl_jual_head.jml_bayar, tbl_jual_head.total
-        FROM tbl_jual_detail JOIN tbl_jual_head ON tbl_jual_detail.no_jual = tbl_jual_head.no_jual WHERE tbl_jual_detail.tgl_jual BETWEEN '$tanggal_dari' AND '$tanggal_sampai' ORDER BY tbl_jual_detail.tgl_jual DESC");
+  $result = mysqli_query($koneksi,"SELECT tbl_jual_detail.*, tbl_jual_head.jml_bayar, tbl_jual_head.total, tbl_barang.harga_jual
+        FROM tbl_jual_detail 
+        JOIN tbl_jual_head ON tbl_jual_detail.no_jual = tbl_jual_head.no_jual 
+        JOIN tbl_barang ON tbl_jual_detail.kode_brg = tbl_barang.id_barang
+        WHERE tbl_jual_detail.tgl_jual BETWEEN '$tanggal_dari' AND '$tanggal_sampai' ORDER BY tbl_jual_detail.tgl_jual DESC");
 }
 
 if (empty($_GET['tanggal_dari'])) {
@@ -48,7 +56,7 @@ if (empty($_GET['tanggal_dari'])) {
     $tanggal = $_GET['tanggal_dari'] . '-' . $_GET['tanggal_sampai'];
 }
 
-?>
+?> 
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -100,7 +108,7 @@ if (empty($_GET['tanggal_dari'])) {
                         <span>Laporan Penjualan Tanggal : <?= date('d F Y', strtotime($_GET['tanggal_dari'])) . ' sampai ' . date('d F Y', strtotime($_GET['tanggal_sampai'])) ?></span>
                         <?php endif; ?>
 
-                    <table class="table table-hover text-nowrap mt-2">
+                    <table class="table table-hover text-nowrap mt-2 text-center">
                         <thead>
                             <tr>
                                 <th>No Nota</th>
@@ -108,9 +116,14 @@ if (empty($_GET['tanggal_dari'])) {
                                 <th>Kode Barang</th>
                                 <th>Nama Barang</th>
                                 <th>QTY</th>
+                                <th>Harga Barang</th>
                                 <th>Total</th>
-                                <th>Pembayaran</th>
                             </tr>
+                            <?php if(mysqli_num_rows($result) === 0) {?>
+                            <tr>
+                                <td colspan="7">Silahkan pilih rentang tanggal</td>
+                            </tr>
+                            <?php } else { ?>
                         </thead>
                         <tbody>
                             <?php
@@ -123,7 +136,7 @@ if (empty($_GET['tanggal_dari'])) {
                                     <td><?= $brg['kode_brg'] ?></td>
                                     <td><?= $brg['nama_brg'] ?></td>
                                     <td><?= $brg['qty'] ?></td>
-                                    <td class="text-center "><?= number_format($brg['total'],0,',','.' )?></td>
+                                    <td class="text-center "><?= number_format($brg['harga_jual'],0,',','.' )?></td>
                                     <td class="text-center"><?= number_format($brg['jml_bayar'],0,',','.' )?></td>
 
                                 </tr>
@@ -131,6 +144,7 @@ if (empty($_GET['tanggal_dari'])) {
                             endwhile;
                             ?>
                         </tbody>
+                        <?php } ?>
                     </table>
                 </div>
             </div>

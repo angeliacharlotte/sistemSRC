@@ -1,10 +1,12 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION["ssLoginPOS"])) {
   header("Location: ../../auth/login.php?pesan=belum_login");
-} elseif ($_SESSION["level"] != '2') {
+} elseif ($_SESSION["level"] != '1') {
   header("Location: ../../error-page.php?pesan=tolak_akses");
 }
 
@@ -48,7 +50,7 @@ if(isset($_POST['simpan'])){
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= $main_url ?>barang">Barang</a></li>
+              <li class="breadcrumb-item"><a href="<?= $main_url ?>rekapMutasi/">Rekap</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
@@ -58,24 +60,10 @@ if(isset($_POST['simpan'])){
 
     <section class="content">
         <div class="container-fluid">
-            <!-- <div class="card">
-                <div class="card-header">
-                            <label for="">Periode Setoran</label>
-                        </div>
-                        <div class="m-3">
-                        <form method="GET">
-                            <div class="input-group mb-2">
-                                <input type="date" class="form-control" name="tanggal_dari">
-                                <input type="date" class="form-control" name="tanggal_sampai">
-                                <button type="submit" class="btn btn-primary">Tampilkan</button>
-                            </div>
-                        </div>
-                        </form>
-                    </div> -->
             <div class="card">
                 <form action="" method="POST" enctype="multipart/form-data">
                 <div class="card-header">
-                     <h3 class="card-title"><i class="fas fa-pen fa-sm"></i> Input Setoran</h3>
+                     <h3 class="card-title"><i class="fas fa-pen fa-sm"></i> Input Laporan Penjualan Harian</h3>
                 <button type="submit" name="simpan" class="btn btn-primary btn-sm float-right"><i class="fas fa-save"></i>  Simpan</button>
                 <button type="reset" class="btn btn-danger btn-sm float-right mr-1"><i class="fas fa-times"></i>  Reset</button>
                 </div>
@@ -91,39 +79,22 @@ if(isset($_POST['simpan'])){
                             <input type="date" name="tanggal" class="form-control" id="tanggal" value="" >
                         </div>
                         <div class="form-group">
-                            <label for="name">Transaksi *</label>
-                            <input type="text" name="transaksi" class="form-control" id="transaksi" placeholder="transaksi" value="" autocomplete="off" autofocus required>
+                            <label for="penjualan">Penjualan *</label>
+                            <input type="number" name="penjualan" class="form-control" id="penjualan" value="" placeholder="Rp 0" autocomplete="off" required>
                         </div>
                         <div class="form-group">
-                            <label for="name">Pengirim *</label>
-                            <input type="text" name="pengirim" class="form-control" id="pengirim" placeholder="Pengirim" value="" autocomplete="off" autofocus required>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Penerima *</label>
-                            <input type="text" name="penerima" class="form-control" id="penerima" placeholder="Penerima" value="" autocomplete="off" autofocus required>
-                        </div>
-                        <div class="form-group">
-                            <label for="periode">Periode *</label>
-                            <input type="text" name="periode" class="form-control" id="periode" placeholder="Periode" value="" autocomplete="off" autofocus required>
+                            <label for="qris">Admin QRIS *</label>
+                            <input type="number" name="qris" class="form-control" id="qris" placeholder="Rp 0" autocomplete="off" required>
                         </div>
                         </div>
                         <div class="col-lg-5 px-3 ml-5 ">
                         <div class="form-group">
-                            <label for="pemasukan">Pemasukan *</label>
-                            <input type="number" name="pemasukan" class="form-control" id="pemasukan" value="" placeholder="Rp 0" autocomplete="off" required>
+                            <label for="insentive">Insentive *</label>
+                            <input type="number" name="insentive" class="form-control" id="insentive" placeholder="Rp 0" autocomplete="off" required>
                         </div>
                         <div class="form-group">
-                            <label for="pengeluaran">Pengeluaran *</label>
-                            <input type="number" name="pengeluaran" class="form-control" id="pengeluaran" placeholder="Rp 0" autocomplete="off" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="pengeluaran">Keterangan Pengeluaran *</label>
-                            <textarea name="ktr" id="ktr" rows="5" class="form-control" placeholder="Masukkan keterangan lengkap..."></textarea>
-                        </div>
-                        <div class="text-center">
-                            <img src="<?= $main_url ?>asset/image/transaction.png  ?>" class="profile-user-img mb-3 mt-4" alt="">
-                            <input type="file" class="form-control" name="image">
-                            <span class="text-sm">Type file gambar JPG | JPEG | PNG </span>
+                            <label for="penggantian_promo">Penggantian Promo *</label>
+                            <input type="number" name="penggantian_promo" class="form-control" id="penggantian_promo" placeholder="Rp 0" autocomplete="off" required>
                         </div>
                         </div>
                     </div>

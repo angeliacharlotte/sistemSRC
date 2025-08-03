@@ -2,8 +2,6 @@
 
 session_start();
 
-session_start();
-
 if (!isset($_SESSION["ssLoginPOS"])) {
   header("Location: ../../auth/login.php?pesan=belum_login");
 } elseif ($_SESSION["level"] != '4' && $_SESSION["level"] != '1') {

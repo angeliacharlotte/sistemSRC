@@ -45,39 +45,31 @@ $nama_bulan_indo = isset($nama_bulan[$filter_bulan]) ? $nama_bulan[$filter_bulan
 
 
 // Query Margin berdasarkan Bulan
-$result = mysqli_query($koneksi, " SELECT 
-        tanggal,
-        SUM(total_pendapatan) AS total_pendapatan,
-        SUM(total_pengeluaran) AS total_pengeluaran,
-        SUM(total_pendapatan) - SUM(total_pengeluaran) AS margin
-    FROM (
-        SELECT 
-            tgl_jual AS tanggal,
-            SUM(jml_harga) AS total_pendapatan,
-            0 AS total_pengeluaran
-        FROM tbl_jual_detail
-        WHERE DATE_FORMAT(tgl_jual, '%Y-%m') = '$bulan'
-        GROUP BY tgl_jual
 
-        UNION ALL
 
-        SELECT 
-            tgl_beli AS tanggal,
-            0 AS total_pendapatan,
-            SUM(jml_harga) AS total_pengeluaran
-        FROM tbl_beli_detail
-        WHERE DATE_FORMAT(tgl_beli, '%Y-%m') = '$bulan'
-        GROUP BY tgl_beli
-    ) AS gabungan
-    GROUP BY tanggal
-    ORDER BY tanggal;
+$result = mysqli_query($koneksi, "
+    SELECT s.id_setoran, s.tgl_setoran AS tanggal,
+        IFNULL(s.qris,0) AS total_qris,
+        (
+            SELECT IFNULL(SUM(jml_harga),0) FROM tbl_beli_detail
+            WHERE tgl_beli LIKE '$bulan%'
+        ) AS total_pembelian,
+        (
+            SELECT IFNULL(SUM(invoice),0) FROM tbl_pengeluaran
+            WHERE DATE_FORMAT(tgl_pengeluaran, '%Y-%m-%d') = DATE_FORMAT(s.tgl_setoran, '%Y-%m-%d')
+        ) AS total_invoice,
+        (IFNULL(s.penjualan,0) - IFNULL(s.qris,0)) AS total_penjualan
+    FROM tbl_setoran s
+    WHERE s.tgl_setoran LIKE '$bulan%'
+    ORDER BY s.tgl_setoran ASC
+");
 ");
 
 // Generate Excel
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
-$sheet->setCellValue('A1', 'REKAP PENJUALAN AREA PURWAKARTA');
+$sheet->setCellValue('A1', 'REKAP PENJUALAN AREA CINUNUK');
 $sheet->mergeCells('A1:E1');
 
 $sheet->setCellValue('A2', 'Bulan');
@@ -111,19 +103,23 @@ $sheet->getStyle('A5:E100')->applyFromArray([
 ]);
 
 $no = 1;
+
 $row = 6;
-$total_pendapatan = 0;
+$total_penjualan = 0;
 $total_pengeluaran = 0;
-$total_margin = 0;
+$total_invoice = 0;
+$total_pembelian = 0;
 
 while($data = mysqli_fetch_array($result)){
     $sheet->setCellValue('A'.$row, $no);
     $sheet->setCellValue('B'.$row, $data['tanggal']);
-    $sheet->setCellValue('C'.$row, $data['total_pendapatan']);
-    $sheet->setCellValue('D'.$row, $data['total_pengeluaran']);
-    $sheet->setCellValue('E'.$row, $data['margin']);
+    $sheet->setCellValue('C'.$row, $data['total_penjualan']);
+    $sheet->setCellValue('D'.$row, $data['total_pembelian']);
+    $sheet->setCellValue('E'.$row, $data['total_invoice']);
 
-    $total_margin += $data['margin'];
+    $total_penjualan += $data['total_penjualan'];
+    $total_pembelian += $data['total_pembelian'];
+    $total_invoice += $data['total_invoice'];
 
     $no++;
     $row++;
@@ -131,8 +127,10 @@ while($data = mysqli_fetch_array($result)){
 
 // Total akhir
 $sheet->setCellValue('A'.$row, 'TOTAL');
-$sheet->mergeCells("A$row:D$row");
-$sheet->setCellValue('E'.$row, $total_margin);
+$sheet->mergeCells("A$row:B$row");
+$sheet->setCellValue('C'.$row, $total_penjualan);
+$sheet->setCellValue('D'.$row, $total_pembelian);
+$sheet->setCellValue('E'.$row, $total_invoice);
 $sheet->getStyle("A$row:E$row")->getFont()->setBold(true);
 
 if (ob_get_length()) {
@@ -140,7 +138,7 @@ if (ob_get_length()) {
 }
 
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="laporan_margin_purwakarta.xlsx"');
+header('Content-Disposition: attachment;filename="laporan_margin_cinunuk.xlsx"');
 header('Cache-Control: max-age=0');
 
 $writer = new Xlsx($spreadsheet);

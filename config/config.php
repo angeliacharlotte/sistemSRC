@@ -16,5 +16,5 @@ $koneksi = mysqli_connect($host, $user, $pass, $dbname);
 //     echo "berhasil koneksi ke database";
 // }
 
-$main_url = 'http://localhost:8080/inventory/';
+$main_url = 'http://localhost/inventory/';
 ?>
