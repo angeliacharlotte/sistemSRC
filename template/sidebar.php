@@ -379,7 +379,7 @@
     <!-- Laporan Pembelian untuk Operator cinunuk-->
     <?php elseif (userLogin()['level'] == 2): ?>
     <li class="nav-item has-treeview <?= menuMaster()?>">
-      <a href="<?= $main_url ?>LaporanPembelian/cinunuk"  class="nav-link">
+      <a href="<?= $main_url ?>laporanPembelian/cinunuk"  class="nav-link">
         <i class="nav-icon fas fa-chart-pie text-sm"></i>
         <p>
           Laporan Pembelian
@@ -389,17 +389,17 @@
     <!-- Laporan Pembelian untuk Operator Cirebon-->
     <?php elseif (userLogin()['level'] == 3): ?>
       <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/cirebon"  class="nav-link">
+        <a href="<?= $main_url ?>laporanPembelian/cirebon"  class="nav-link">
           <i class="nav-icon fas fa-chart-pie text-sm"></i>
           <p>
             Laporan Pembelian
           </p>
         </a>
         </li>
-    <!-- Laporan Pembelian untuk Operator tasikmalaya-->
+    <!-- laporan Pembelian untuk Operator tasikmalaya-->
     <?php elseif (userLogin()['level'] == 4): ?>
       <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/tasikmalaya"  class="nav-link">
+        <a href="<?= $main_url ?>laporanPembelian/tasikmalaya"  class="nav-link">
           <i class="nav-icon fas fa-chart-pie text-sm"></i>
           <p>
             Laporan Pembelian
@@ -409,7 +409,7 @@
     <!-- Laporan Pembelian untuk Operator Baksul-->
     <?php elseif (userLogin()['level'] == 5): ?>
       <li class="nav-item has-treeview <?= menuMaster()?>">
-        <a href="<?= $main_url ?>LaporanPembelian/baksul"  class="nav-link">
+        <a href="<?= $main_url ?>laporanPembelian/baksul"  class="nav-link">
           <i class="nav-icon fas fa-chart-pie text-sm"></i>
           <p>
             Laporan Pembelian
@@ -470,7 +470,7 @@
     <!-- Laporan Penjualan untuk Operator cinunuk -->
     <?php elseif(userLogin()['level'] == 2): ?>
     <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/cinunuk" class="nav-link">
+      <a href="<?= $main_url ?>laporanPenjualan/cinunuk" class="nav-link">
         <i class="nav-icon fas fa-chart-line text-sm"></i>
         <p>Laporan Penjualan</p>
       </a>
@@ -478,7 +478,7 @@
     <!-- Laporan Penjualan untuk Operator Cirebon -->
     <?php elseif(userLogin()['level'] == 3): ?>
     <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/cirebon" class="nav-link">
+      <a href="<?= $main_url ?>laporanPenjualan/cirebon" class="nav-link">
         <i class="nav-icon fas fa-chart-line text-sm"></i>
         <p>Laporan Penjualan</p>
       </a>
@@ -486,7 +486,7 @@
     <!-- Laporan Penjualan untuk Operator tasikmalaya -->
     <?php elseif(userLogin()['level'] == 4): ?>
     <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/tasikmalaya" class="nav-link">
+      <a href="<?= $main_url ?>laporanPenjualan/tasikmalaya" class="nav-link">
         <i class="nav-icon fas fa-chart-line text-sm"></i>
         <p>Laporan Penjualan</p>
       </a>
@@ -494,7 +494,7 @@
     <!-- Laporan Penjualan untuk Operator Baksul -->
     <?php elseif(userLogin()['level'] == 5): ?>
     <li class="nav-item">
-      <a href="<?= $main_url ?>LaporanPenjualan/baksul" class="nav-link">
+      <a href="<?= $main_url ?>laporanPenjualan/baksul" class="nav-link">
         <i class="nav-icon fas fa-chart-line text-sm"></i>
         <p>Laporan Penjualan</p>
       </a>

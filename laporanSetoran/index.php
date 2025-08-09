@@ -88,8 +88,11 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
                   <th>Tanggal</th>
                   <th>Penjualan</th>
                   <th>Admin QRIS</th>
+                  <th>Pembelian</th>
+                  <th>Insentive</th> <!-- Tambahan -->
+                  <th>Penggantian Promo</th> <!-- Tambahan -->
                   <th>Total</th>
-                  <th>Action</th>
+                  <!-- <th>Action</th> -->
                 </tr>
               </thead>
               <tbody>
@@ -102,16 +105,18 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
                     <td><?= date('d F Y', strtotime($str['tgl_setoran'])) ?></td>
                     <td class="text-center"><?= number_format($str['penjualan'],0,',','.') ?></td>
                     <td class="text-center"><?= number_format($str['qris'],0,',','.') ?></td>
+                    <td class="text-center"><?= number_format($str['pembelian'] ?? 0,0,',','.') ?></td>
+                    <td class="text-center"><?= number_format($str['insentive'] ?? 0,0,',','.') ?></td> <!-- Tambahan -->
+                    <td class="text-center"><?= number_format($str['penggantian_promo'] ?? 0,0,',','.') ?></td> <!-- Tambahan -->
                     <td class="text-center">
                       <?php
                         $total = $str['penjualan'] - $str['qris'];
                         echo number_format($total,0,',','.');
                       ?>
                     </td>
-                    <td>
+                    <!-- <td>
                       <a href="edit-piutang.php?id=<?= $str['id_setoran'] ?>" class="btn btn-sm btn-warning" title="Edit"><i class="fas fa-user-edit"></i></a>
-                      
-                    </td>
+                    </td> -->
                   </tr>
                 <?php endwhile; else: ?>
                   <tr><td colspan="11" class="text-center">Tidak ada data ditemukan.</td></tr>
@@ -135,43 +140,30 @@ $result = $query ? mysqli_query($koneksi, $query) : null;
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Export Excel Presensi Harian</h5>
+            <h5 class="modal-title">Export Excel Rekap Setoran</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-            <?php
-            if ($cabang === 'Cinunuk') {
-                $query = "barang/form-barang.php";
-            }elseif($cabang === 'Cirebon') {
-                $query = "SELECT * FROM tbl_setoran_cirebon";
-            }elseif($cabang === 'Baksul') {
-                $query = "SELECT * FROM tbl_setoran_baksul";
-            }elseif($cabang === 'Tasikmalaya') {
-                $query = "SELECT * FROM tbl_setoran_tasik";
-            } else {
-                $query = "";
-            }
-            ?>
-          <form method="POST" action="<?php echo $main_url . $query; ?>">
+          <form method="POST" action="rekap_setoran_excel.php">
             <div class="modal-body">
               <div class="mb-3">
                 <label for="">Tanggal Awal</label>
-                <input type="date" class="form-control" name="tanggal_dari">
+                <input type="date" class="form-control" name="tanggal_dari" required>
               </div>
               <div class="mb-3">
                 <label for="">Tanggal Akhir</label>
-                <input type="date" class="form-control" name="tanggal_sampai">
+                <input type="date" class="form-control" name="tanggal_sampai" required>
               </div>
-              <select class="form-select" name="cab" id="cab" required>
+              <select class="form-select" name="cabang" id="cabang" required>
                 <option value="" disabled selected> Pilih Area Cabang </option>
-                <option value="Cinunuk" <?php echo ($cbang === 'Cinunuk' ? 'selected' : ''); ?>>Cinunuk</option>
-                <option value="Cirebon" <?php echo ($cbang === 'Cirebon' ? 'selected' : ''); ?>>Cirebon</option>
-                <option value="Tasikmalaya" <?php echo ($cbang === 'Tasikmalaya' ? 'selected' : ''); ?>>Tasikmalaya</option>
-                <option value="Baksul" <?php echo ($cbang === 'Baksul' ? 'selected' : ''); ?>>Baksul</option>
+                <option value="Cinunuk" <?= ($cabang === 'Cinunuk' ? 'selected' : ''); ?>>Cinunuk</option>
+                <option value="Cirebon" <?= ($cabang === 'Cirebon' ? 'selected' : ''); ?>>Cirebon</option>
+                <option value="Tasikmalaya" <?= ($cabang === 'Tasikmalaya' ? 'selected' : ''); ?>>Tasikmalaya</option>
+                <option value="Baksul" <?= ($cabang === 'Baksul' ? 'selected' : ''); ?>>Baksul</option>
             </select>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger me-auto" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Export</button>
+              <button type="submit" class="btn btn-success">Export</button>
             </div>
           </form>
         </div>
@@ -189,7 +181,7 @@ function hitungSisaPembayaran() {
 
   rows.forEach(row => {
     // Total di kolom ke-5
-    const totalText = row.querySelector('td:nth-child(5)')?.textContent.trim().replace(/\./g, '') || '0';
+    const totalText = row.querySelector('td:nth-child(8)')?.textContent.trim().replace(/\./g, '') || '0';
     const total = parseInt(totalText) || 0;
     totalSaldo += total;
   });

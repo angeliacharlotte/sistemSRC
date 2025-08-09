@@ -7,28 +7,17 @@ if(!isset($_SESSION["ssLoginPOS"])) {
 require "../../config/config.php";
 require "../../config/functions.php";
 require "../../module/mode-barang.php";
-
-$title = "Laporan Penjualan - Inventory";
-// require "../../template/header.php";
-// require "../../template/navbar.php";
-// require "../../template/sidebar.php";
 require '../../asset/vendor/autoload.php';
-
-
-use PhpOffice\PhpSpreadsheet\Reader\Xls\Style\Border;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Border as StyleBorder;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
 $tanggal_dari = $_POST['tanggal_dari'];
 $tanggal_sampai = $_POST['tanggal_sampai'];
 $result = mysqli_query($koneksi,"SELECT tbl_beli_detail_tasik.*, tbl_beli_head_tasik.suplier, tbl_beli_head_tasik.keterangan,  tbl_beli_head_tasik.total
         FROM tbl_beli_detail_tasik JOIN tbl_beli_head_tasik ON tbl_beli_detail_tasik.no_beli = tbl_beli_head_tasik.no_beli WHERE tbl_beli_detail_tasik.tgl_beli BETWEEN '$tanggal_dari' AND '$tanggal_sampai' ORDER BY tbl_beli_detail_tasik.tgl_beli DESC");
-
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
-
-$sheet->setCellValue('A1', 'REKAP PENJUALAN AREA TASIKMALAYA');
+$sheet->setCellValue('A1', 'REKAP PEMBELIAN AREA TASIKMALAYA');
 $sheet->setCellValue('A2', 'Tanggal Awal');
 $sheet->setCellValue('A3', 'Tanggal Akhir');
 $sheet->setCellValue('C2', $tanggal_dari);
@@ -43,14 +32,12 @@ $sheet->setCellValue('G5', 'SUPPLIER');
 $sheet->setCellValue('H5', 'HARGA');
 $sheet->setCellValue('I5', 'TOTAL');
 $sheet->setCellValue('J5', 'KETERANGAN');
-
 $sheet->getStyle('A1')->getFont()->setBold(true);
 $sheet->getStyle('A2')->getFont()->setBold(true);
 $sheet->getStyle('A3')->getFont()->setBold(true);
 $sheet->getStyle('C2')->getFont()->setBold(true);
 $sheet->getStyle('C3')->getFont()->setBold(true);
 $sheet->getStyle('A5:J5')->getFont()->setBold(true);
-
 $sheet->getStyle('A5:J10')->applyFromArray([
   'borders' => [
     'allborders' =>[
@@ -59,16 +46,12 @@ $sheet->getStyle('A5:J10')->applyFromArray([
     ],
   ],
 ]);
-
 $sheet->mergeCells('A1:F1');
 $sheet->mergeCells('A2:B2');
 $sheet->mergeCells('A3:B3');
-
 $no = 1;
 $row = 6;
-
 while($data = mysqli_fetch_array($result)){
-
     $sheet->setCellValue('A'.$row, $no);
     $sheet->setCellValue('B'.$row, $data['no_beli']);
     $sheet->setCellValue('C'.$row, $data['tgl_beli']);
@@ -83,21 +66,16 @@ while($data = mysqli_fetch_array($result)){
     $no++;
     $row++;
 }
-
 if (ob_get_length()) {
     ob_end_clean();
 }
-// redirect output to client browser
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename="rekap_pembelian_tasik.xlsx"');
 header('Cache-Control: max-age=0');
-
-$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
 $writer = new Xlsx($spreadsheet);
 $writer->save('php://output');
+exit();
 ?>
 <?php
-
 require "../../template/footer.php";
-
 ?>
