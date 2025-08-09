@@ -59,8 +59,8 @@ while($data = mysqli_fetch_array($result)){
     $sheet->setCellValue('E'.$row, $data['nama_brg']);
     $sheet->setCellValue('F'.$row, $data['qty']);
     $sheet->setCellValue('G'.$row, $data['suplier']);
-    $sheet->setCellValue('H'.$row, $data['harga_beli']);
-    $sheet->setCellValue('I'.$row, $data['total']);
+    $sheet->setCellValue('H'.$row, 'Rp ' . number_format((int)str_replace('.', '', $data['harga_beli']), 0, ',', '.'));
+    $sheet->setCellValue('I'.$row, 'Rp ' . number_format((int)str_replace('.', '', $data['total']), 0, ',', '.'));
     $sheet->setCellValue('J'.$row, $data['keterangan']);
 
     $no++;

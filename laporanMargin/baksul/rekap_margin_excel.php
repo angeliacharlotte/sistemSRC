@@ -98,9 +98,9 @@ $total_margin = 0;
 while($data = mysqli_fetch_array($result)){
     $sheet->setCellValue('A'.$row, $no);
     $sheet->setCellValue('B'.$row, $data['tanggal']);
-    $sheet->setCellValue('C'.$row, $data['total_pendapatan']);
-    $sheet->setCellValue('D'.$row, $data['total_pengeluaran']);
-    $sheet->setCellValue('E'.$row, $data['margin']);
+    $sheet->setCellValue('C'.$row, 'Rp ' . number_format($data['total_pendapatan'], 0, ',', '.'));
+    $sheet->setCellValue('D'.$row, 'Rp ' . number_format($data['total_pengeluaran'], 0, ',', '.'));
+    $sheet->setCellValue('E'.$row, 'Rp ' . number_format($data['margin'], 0, ',', '.'));
 
     $total_margin += $data['margin'];
 
@@ -109,7 +109,7 @@ while($data = mysqli_fetch_array($result)){
 }
 $sheet->setCellValue('A'.$row, 'TOTAL');
 $sheet->mergeCells("A$row:D$row");
-$sheet->setCellValue('E'.$row, $total_margin);
+$sheet->setCellValue('E'.$row, 'Rp ' . number_format($total_margin, 0, ',', '.'));
 $sheet->getStyle("A$row:E$row")->getFont()->setBold(true);
 if (ob_get_length()) {
     ob_end_clean();

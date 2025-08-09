@@ -90,21 +90,28 @@ $total_pembelian = 0;
 while($data = mysqli_fetch_array($result)){
     $sheet->setCellValue('A'.$row, $no);
     $sheet->setCellValue('B'.$row, $data['tanggal']);
-    $sheet->setCellValue('C'.$row, $data["total_penjualan"]);
-    $sheet->setCellValue('D'.$row, $data["total_pembelian"]);
-    $sheet->setCellValue('E'.$row, $data["total_invoice"]);
+    $sheet->setCellValue('C'.$row, 'Rp ' . number_format($data["total_penjualan"], 0, ',', '.'));
+    $sheet->setCellValue('D'.$row, 'Rp ' . number_format($data["total_pembelian"], 0, ',', '.'));
+    $sheet->setCellValue('E'.$row, 'Rp ' . number_format($data["total_invoice"], 0, ',', '.'));
     $total_penjualan += $data['total_penjualan'];
     $total_pembelian += $data['total_pembelian'];
     $total_invoice += $data['total_invoice'];
     $no++;
     $row++;
 }
+
+// Baris Total
 $sheet->setCellValue('A'.$row, 'TOTAL');
 $sheet->mergeCells("A$row:B$row");
-$sheet->setCellValue('C'.$row, $total_penjualan);
-$sheet->setCellValue('D'.$row, $total_pembelian);
-$sheet->setCellValue('E'.$row, $total_invoice);
+$sheet->setCellValue('C'.$row, 'Rp ' . number_format($total_penjualan, 0, ',', '.'));
+$sheet->setCellValue('D'.$row, 'Rp ' . number_format($total_pembelian, 0, ',', '.'));
+$sheet->setCellValue('E'.$row, 'Rp ' . number_format($total_invoice, 0, ',', '.'));
 $sheet->getStyle("A$row:E$row")->getFont()->setBold(true);
+$row++;
+$keuntungan_bersih = $total_penjualan - $total_pembelian - $total_invoice;
+$sheet->setCellValue('D'.$row, 'Keuntungan Bersih');
+$sheet->setCellValue('E'.$row, 'Rp ' . number_format($keuntungan_bersih, 0, ',', '.'));
+$sheet->getStyle("D$row:E$row")->getFont()->setBold(true);
 if (ob_get_length()) {
     ob_end_clean();
 }
